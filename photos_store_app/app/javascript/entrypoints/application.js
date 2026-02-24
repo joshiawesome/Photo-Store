@@ -29,7 +29,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 
 // Create a Vue app
 import { createApp } from 'vue';
-import { createPinia } from 'pinia';
+
 
 // Import the App component
 import App from "../components/App.vue";

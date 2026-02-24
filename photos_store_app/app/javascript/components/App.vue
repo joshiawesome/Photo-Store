@@ -1,25 +1,19 @@
 <template>
   <div>
-    <h1>Vue file</h1>
+    <h1>{{ message }}</h1>
+    <button @click="increment">Count: {{ count }}</button>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ProjectRApp',
+<script lang="ts" setup>
+import { ref, computed } from 'vue';
 
-  data() {
-    return {
-      
-    };
-  },
+const count = ref<number>(0);
+const message = ref<string>('Hello Composition API');
 
-  mounted() {
-    
-  },
+function increment(): void {
+  count.value++;
+}
 
-  methods: {
-    
-  },
-};
+const doubled = computed(() => count.value * 2);
 </script>
