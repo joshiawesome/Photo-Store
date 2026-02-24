@@ -1,0 +1,50 @@
+# =========================
+# Rails
+# =========================
+/log/*
+/tmp/*
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/packs
+/public/assets
+.byebug_history
+
+# Ignore Rails master key (credentials)
+config/master.key
+
+# Ignore Rails credentials (if using encrypted secrets)
+config/credentials.yml.enc
+
+# =========================
+# Node / Vite / JS
+# =========================
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+
+# =========================
+# Docker / Kamal
+# =========================
+.kamal/secrets
+docker-compose.override.yml
+.dockerignore
+
+# =========================
+# Misc / Temporary
+# =========================
+*.log
+*.pid
+*.seed
+tmp/storage/
