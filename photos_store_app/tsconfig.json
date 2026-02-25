@@ -3,6 +3,12 @@
         "target": "ESNext",
         "module": "ESNext",
         "moduleResolution": "Node",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "app/javascript/*"
+            ]
+        },
         "strict": true,
         "jsx": "preserve",
         "jsxImportSource": "vue",

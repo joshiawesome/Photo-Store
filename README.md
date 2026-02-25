@@ -2,6 +2,12 @@
 
 This is a Vue on Rails photo store application with hot reload.
 
+# Concept
+- Use an external API to fetch photos
+- Hydrate the local database with the photos
+- Use Vue to display the photos
+- Use Pinia to manage state
+
 # Tech stack
 1. Rails for backend
 2. Vue for frontend
@@ -15,6 +21,7 @@ This is a Vue on Rails photo store application with hot reload.
 3. Vue Language Features (Volar) support for Vue and Typescript - disable this extension
 4. Press Cmd+Shift+P → TypeScript: Select TypeScript Version → Choose Use Workspace Version. 
    This ensures Volar uses the TypeScript in your node_modules instead of the built-in VS Code version.
+5. Ruby Solargraph (for autocompletion in ruby files)
 
 # How this project was created
 
@@ -43,3 +50,20 @@ rails s
 
 # Start Vite development server parallel to the Rails server
 bin/vite dev
+
+# To add a RubyGem
+1. Navigate to the `Gemfile` and add the gem
+2. Run `bundle install`
+3. Restart the Rails server
+
+# To add a log inside an `rb` file
+1. Navigate to the `rb` file
+2. Add `Rails.logger.info "Your log message"` eg `Rails.logger.info "URL: #{URL}"`
+3. The logs will show up in the terminal as server logs
+
+# Imports in rails
+1. Rails imports are auto-loaded via `Zeitwerk autoloading`
+
+# Rails Console
+1. Run `rails console` to open the console.
+2. Run `exit!` to exit the console.

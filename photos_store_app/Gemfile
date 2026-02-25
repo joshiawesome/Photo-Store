@@ -65,4 +65,16 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :development, :test do
+  gem 'dotenv-rails'
+end
+
+group :development do
+  gem 'solargraph'
+end
+
 gem "vite_rails", "~> 3.0"
+
+gem "httparty"
+
+
