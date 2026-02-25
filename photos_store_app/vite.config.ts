@@ -4,8 +4,6 @@ import RubyPlugin from 'vite-plugin-ruby'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
-
-
 export default defineConfig({
   plugins: [
     RubyPlugin(),
