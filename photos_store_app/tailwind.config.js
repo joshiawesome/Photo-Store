@@ -1,4 +1,5 @@
-module.exports = {
+
+export default {
     content: [
         'app/views/**/*.html.erb',
         'app/helpers/**/*.rb',
@@ -7,11 +8,7 @@ module.exports = {
         'app/javascript/**/*.vue'
     ],
     theme: {
-        extend: {
-            colors: {
-                brand: 'red',
-            },
-        },
+        extend: {},
     },
     plugins: [],
 }
