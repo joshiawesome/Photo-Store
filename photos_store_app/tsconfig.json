@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
         "strict": true,
         "jsx": "preserve",
+        "jsxImportSource": "vue",
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "lib": [
@@ -13,7 +14,8 @@
         ],
         "skipLibCheck": true,
         "types": [
-            "vite/client"
+            "vite/client",
+            "vue/jsx"
         ]
     },
     "include": [

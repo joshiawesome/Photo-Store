@@ -29,14 +29,18 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 
 // Create a Vue app
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
 
 // Import the App component
 import App from "../components/App.vue";
 
 // Mount the app
-const app = createApp(App).mount('#app');
+const app = createApp(App);
 app.use(createPinia());
+app.mount('#app');
+
+
 
 
 

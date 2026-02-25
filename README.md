@@ -12,7 +12,7 @@ This is a Vue on Rails photo store application with hot reload.
 # Vs Code Extensions
 1. Vue (Official)
 2. Vue 3 Snippets (to create a boilerplate vue file, type `vue init` and hit enter)
-3. Vue Language Features (Volar) support for Vue and Typescript
+3. Vue Language Features (Volar) support for Vue and Typescript - disable this extension
 4. Press Cmd+Shift+P → TypeScript: Select TypeScript Version → Choose Use Workspace Version. 
    This ensures Volar uses the TypeScript in your node_modules instead of the built-in VS Code version.
 

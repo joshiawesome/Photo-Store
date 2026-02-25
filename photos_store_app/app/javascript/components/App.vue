@@ -2,18 +2,17 @@
   <div>
     <h1>{{ message }}</h1>
     <button @click="increment">Count: {{ count }}</button>
+    <p>Doubles: {{ doubled }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
+import { useCounterStore } from '../stores/counterStore';
+import { storeToRefs } from 'pinia';
 
-const count = ref<number>(0);
-const message = ref<string>('Hello Composition API');
-
-function increment(): void {
-  count.value++;
-}
-
-const doubled = computed(() => count.value * 2);
+const message = ref('Hello Pinia + Composition API');
+const counter = useCounterStore();
+const { count, doubled } = storeToRefs(counter);
+const { increment } = counter;
 </script>
