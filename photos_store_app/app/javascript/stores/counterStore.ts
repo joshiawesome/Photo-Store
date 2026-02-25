@@ -3,15 +3,15 @@ import { ref, computed } from 'vue';
 
 export const useCounterStore = defineStore('counter', () => {
     // state
-    const count = ref<number>(0);
+    const count = ref<number>(0)
 
     // actions
     function increment() {
-        count.value++;
+        count.value++
     }
 
     // getters
-    const doubled = computed(() => count.value * 2);
+    const doubled = computed(() => count.value * 2)
 
-    return { count, increment, doubled };
+    return { count, increment, doubled }
 });
