@@ -14,4 +14,4 @@ export const useCounterStore = defineStore('counter', () => {
     const doubled = computed(() => count.value * 2)
 
     return { count, increment, doubled }
-});
+})

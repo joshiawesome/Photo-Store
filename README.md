@@ -11,9 +11,10 @@ This is a Vue on Rails photo store application with hot reload.
 # Tech stack
 1. Rails for backend
 2. Vue for frontend
-3. Vite for frontend build tool
-4. Pinia for state management
-5. SQLite for database
+3. Tailwind CSS for styling
+4. Vite for frontend build tool
+5. Pinia for state management
+6. SQLite for database
 
 # Vs Code Extensions
 1. Vue (Official)
@@ -22,6 +23,7 @@ This is a Vue on Rails photo store application with hot reload.
 4. Press Cmd+Shift+P → TypeScript: Select TypeScript Version → Choose Use Workspace Version. 
    This ensures Volar uses the TypeScript in your node_modules instead of the built-in VS Code version.
 5. Ruby Solargraph (for autocompletion in ruby files)
+6. Tailwind CSS Intellisense (for styling)
 
 # How this project was created
 

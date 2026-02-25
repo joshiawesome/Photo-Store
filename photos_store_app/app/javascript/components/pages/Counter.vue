@@ -1,9 +1,10 @@
 <template>
-    <div>
+    <div class="bg-brand p-2">
         <h2>{{ title }}</h2>
         <p>This is a reference file to play around with pinia and vue</p>
         <button @click="increment">Count: {{ count }}</button>
         <p>Doubles: {{ doubled }}</p>
+        <div class="btn">Button</div>
     </div>
 </template>
 
