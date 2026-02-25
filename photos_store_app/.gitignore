@@ -48,3 +48,6 @@ docker-compose.override.yml
 *.pid
 *.seed
 tmp/storage/
+
+# photos_store_app/.gitignore
+.env
