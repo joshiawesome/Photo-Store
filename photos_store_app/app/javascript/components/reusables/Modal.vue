@@ -53,7 +53,6 @@ const { isOpen, submitText, cancelText, isSubmitDisabled, onSubmit } = toRefs(pr
 
 const emit = defineEmits(['update:isOpen'])
 const close = () => {
-    console.log('Closing modal')
     emit('update:isOpen', false)
 }
 </script>
