@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Counter title="Counter" />
+    <!-- <Counter title="Counter" /> -->
     <Photos />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 bg-red-50 bg-brand">
+    <div class="p-2 bg-amber-50">
         <h2>{{ title }}</h2>
         <p>This is a reference file to play around with pinia and vue</p>
         <button @click="increment">Count: {{ count }}</button>
