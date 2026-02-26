@@ -24,6 +24,7 @@ This is a Vue on Rails photo store application with hot reload.
    This ensures Volar uses the TypeScript in your node_modules instead of the built-in VS Code version.
 5. Ruby Solargraph (for autocompletion in ruby files)
 6. Tailwind CSS Intellisense (for styling)
+7. Heroicons (for icons). link: https://heroicons.com/
 
 # How this project was created
 

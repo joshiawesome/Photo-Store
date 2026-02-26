@@ -17,6 +17,7 @@
     "vue-tsc": "^3.2.5"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "axios": "^1.13.5",
     "pinia": "^3.0.4",
     "vite-plugin-full-reload": "^1.2.0"
