@@ -1,0 +1,9 @@
+:root {
+    --navy-blue: #131921;
+}
+
+@layer utilities {
+    .bg-navy-blue {
+        background-color: var(--navy-blue)
+    }
+}

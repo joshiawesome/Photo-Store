@@ -1,5 +1,30 @@
 @layer components {
+    .btn {
+        @apply flex items-center justify-center cursor-pointer relative transition duration-300
+    }
+
+    .btn::before {
+        @apply absolute inset-0 bg-white/20 backdrop-blur-sm opacity-0 rounded transition-opacity duration-300 pointer-events-none;
+        content: '';
+    }
+
+    .btn:hover::before {
+        @apply opacity-45;
+    }
+
+    .btn-sm {
+        @apply px-2 py-1 text-sm h-5.5
+    }
+
+    .btn-md {
+        @apply px-4 py-2 h-8
+    }
+
+    .btn-lg {
+        @apply px-6 py-3 text-lg h-10.5
+    }
+
     .btn-primary {
-        @apply px-4 py-2 rounded font-medium bg-pink-600 text-white hover:bg-blue-700;
+        @apply rounded font-medium bg-[#e67e22] text-black
     }
 }

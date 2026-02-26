@@ -1,26 +1,5 @@
 @import "tailwindcss";
+@import "./animation.css";
 @import "./button.css";
-
-
-/* :root {
-    --color-brand: pink;
-    --color-primary: #2563eb;
-}
-
-.bg-brand {
-    background-color: var(--color-brand);
-}
-
-.text-primary {
-    color: var(--color-primary);
-} */
-
-/* @layer components {
-    .btn {
-        @apply px-4 py-2 rounded font-medium bg-pink-600 text-white hover:bg-blue-700;
-    }
-
-    .card {
-        @apply rounded-lg border border-gray-200 bg-white p-4 shadow-sm;
-    }
-} */
+@import "./colors.css";
+@import "./spacing.css";
