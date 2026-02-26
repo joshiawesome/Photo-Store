@@ -1,5 +1,5 @@
 <template>
-    <IconPopOver placement="bottom">
+    <IconPopOver>
         <template #trigger>
             <UserCircleIcon class="w-8 h-8 text-white cursor-pointer" />
         </template>

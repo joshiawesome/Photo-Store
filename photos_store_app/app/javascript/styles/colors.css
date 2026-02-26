@@ -1,9 +1,27 @@
 :root {
+    --white: #ffffff;
     --navy-blue: #131921;
+    --gray-200: #e5e7eb;
 }
 
 @layer utilities {
+
+    /* Background Colors */
     .bg-navy-blue {
         background-color: var(--navy-blue)
+    }
+
+    .bg-white {
+        background-color: var(--white)
+    }
+
+    /* Text Colors */
+    .text-white {
+        color: var(--white)
+    }
+
+    /* Border Colors */
+    .border-gray {
+        border-color: var(--gray-200)
     }
 }

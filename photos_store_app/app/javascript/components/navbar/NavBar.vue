@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import UserProfile from '@/components/navbar/UserProfile.vue'
 import Login from '@/components/navbar/Login.vue'
 import SignUp from '@/components/navbar/SignUp.vue'
+import UserProfile from '@/components/navbar/UserProfile.vue'
 </script>

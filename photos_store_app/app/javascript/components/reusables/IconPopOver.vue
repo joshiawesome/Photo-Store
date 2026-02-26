@@ -5,7 +5,7 @@
         </div>
 
         <div v-if="open" ref="floating" :style="floatingStyles"
-            class="bg-white shadow-lg p-4 rounded border border-gray-200">
+            class="bg-white shadow-lg p-sm rounded border border-gray">
             <slot name="content" />
         </div>
     </div>
@@ -16,10 +16,10 @@ import { onBeforeUnmount, onMounted, ref, watchEffect } from "vue"
 import { useFloating, autoUpdate, offset, flip, shift, Placement } from "@floating-ui/vue"
 
 interface Props {
-    placement: Placement
+    placement?: Placement
 }
 
-const { placement } = defineProps<Props>()
+const { placement = "bottom" } = defineProps<Props>()
 
 const open = ref(false)
 const reference = ref<HTMLElement | null>(null)
