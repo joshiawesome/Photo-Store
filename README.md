@@ -70,3 +70,10 @@ bin/vite dev
 # Rails Console
 1. Run `rails console` to open the console.
 2. Run `exit!` to exit the console.
+
+# Styling
+1. Use Tailwind CSS for styling
+2. Use the `spacing.css` file for spacing utilities
+3. Use the `colors.css` file for color utilities
+4. Use the `animation.css` file for animation utilities
+5. Use the `button.css` file for button utilities

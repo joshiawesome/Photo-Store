@@ -1,6 +1,6 @@
 @layer components {
     .btn {
-        @apply flex items-center justify-center cursor-pointer relative transition duration-300
+        @apply flex items-center justify-center cursor-pointer whitespace-nowrap relative transition duration-300
     }
 
     .btn::before {
