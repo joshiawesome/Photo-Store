@@ -1,7 +1,11 @@
 :root {
     --white: #ffffff;
+    --black: #000000;
     --navy-blue: #131921;
     --gray-200: #e5e7eb;
+    --orange: #e67e22;
+    --light-gray: #f3f4f6;
+    --dark-gray: #374151;
 }
 
 @layer utilities {
@@ -15,9 +19,21 @@
         background-color: var(--white)
     }
 
+    .bg-orange {
+        background-color: var(--orange)
+    }
+
+    .bg-light-gray {
+        background-color: var(--light-gray)
+    }
+
     /* Text Colors */
     .text-white {
         color: var(--white)
+    }
+
+    .text-dark-gray {
+        color: var(--dark-gray)
     }
 
     /* Border Colors */

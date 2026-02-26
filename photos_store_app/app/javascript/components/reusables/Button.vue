@@ -1,29 +1,19 @@
 <template>
     <div>
-        <button @click="onClick" :class="`btn btn-${variant} btn-${size}`">
+        <button @click="onClick" :class="`btn btn-${variant} btn-${size}`" :disabled="isDisabled">
             {{ label }}
         </button>
     </div>
 </template>
 
 <script lang="ts" setup>
-enum Variant {
-    Primary = 'primary',
-    Secondary = 'secondary',
-}
-
-enum Size {
-    Sm = 'sm',
-    Md = 'md',
-    Lg = 'lg',
-}
-
 interface Props {
     label: string
     onClick: () => void
-    variant?: Variant
-    size?: Size
+    variant?: 'primary' | 'secondary'
+    size?: 'sm' | 'md' | 'lg'
+    isDisabled?: boolean
 }
 
-const { label, onClick, variant = Variant.Primary, size = Size.Md } = defineProps<Props>()
+const { label, onClick, variant = 'primary', size = 'md', isDisabled = false } = defineProps<Props>()
 </script>
