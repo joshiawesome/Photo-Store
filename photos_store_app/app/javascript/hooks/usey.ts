@@ -12,7 +12,7 @@ const csrfToken =
         ?.content
 
 
-export function useApi<TResponse, TBody = unknown>() {
+export function useAPI<TResponse, TBody = unknown>() {
     if (!csrfToken) {
         throw new Error('CSRF token not found')
     }

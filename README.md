@@ -75,7 +75,7 @@ bin/vite dev
 2. Run `exit!` to exit the console.
 
 # API Calls
-1. Use the `useApi` hook to make API calls
+1. Use the `useAPI` hook to make API calls
 
 # Styling
 1. Use Tailwind CSS for styling

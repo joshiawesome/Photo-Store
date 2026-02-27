@@ -8,18 +8,18 @@
 import { onMounted } from 'vue'
 import NavBar from '@/components/navbar/NavBar.vue'
 import { IPhotoConfig, usePhotosStore } from '@/stores/photosStore'
-import { useApi } from '@/hooks/useApi'
+import { useAPI } from '@/hooks/usey'
 
-const externalPhotosApi = useApi<{}, {}>()
-const internalPhotosApi = useApi<IPhotoConfig[], {}>()
+const externalPhotosAPI = useAPI<{}, {}>()
+const internalPhotosAPI = useAPI<IPhotoConfig[], {}>()
 
-const triggerApiCalls = async () => {
-  await externalPhotosApi.request({
+const hitAPIEndpoints = async () => {
+  await externalPhotosAPI.request({
     url: "/photos/import",
     method: "POST"
   })
 
-  const photos = await internalPhotosApi.request({
+  const photos = await internalPhotosAPI.request({
     url: "/photos",
     method: "GET"
   })
@@ -27,8 +27,7 @@ const triggerApiCalls = async () => {
   usePhotosStore().photos = photos
 }
 
-
 onMounted(() => {
-  triggerApiCalls()
+  hitAPIEndpoints()
 })
 </script>

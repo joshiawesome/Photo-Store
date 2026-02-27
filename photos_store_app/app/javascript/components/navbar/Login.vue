@@ -15,7 +15,6 @@ import { ref } from 'vue'
 import Button from '@/components/reusables/Button.vue'
 import Input from '@/components/reusables/Input.vue'
 import Modal from '@/components/reusables/Modal.vue'
-import Loader from '@/components/reusables/Loader.vue'
 
 
 const isOpen = ref(false)
@@ -23,6 +22,4 @@ const isOpen = ref(false)
 const openForm = () => {
     isOpen.value = true
 }
-
-
 </script>
