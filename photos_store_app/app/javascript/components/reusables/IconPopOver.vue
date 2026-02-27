@@ -1,5 +1,5 @@
 <template>
-    <div class="relative h-screen flex items-center justify-center">
+    <div class="relative h-full flex items-center justify-center">
         <div ref="reference" @click="open = !open">
             <slot name="trigger" />
         </div>

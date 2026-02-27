@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center justify-between w-full h-navbar bg-navy-blue p-sm">
         <div></div>
-        <div class="flex items-center gap-sm">
+        <div class="h-full flex items-center gap-sm">
             <Login />
             <SignUp />
             <UserProfile />
