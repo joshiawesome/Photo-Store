@@ -21,6 +21,13 @@
     --width-icon-lg: 24px;
     --width-icon-xl: 32px;
 
+    /* Loader */
+    --width-loader-xs: 16px;
+    --width-loader-sm: 24px;
+    --width-loader-md: 32px;
+    --width-loader-lg: 48px;
+    --width-loader-xl: 64px;
+
     /* Sidebar */
     --sidebar-width: 260px;
 }
@@ -89,6 +96,27 @@
 
     .w-icon-xl {
         width: var(--width-icon-xl);
+    }
+
+    /* Loader */
+    .w-loader-xs {
+        width: var(--width-loader-xs);
+    }
+
+    .w-loader-sm {
+        width: var(--width-loader-sm);
+    }
+
+    .w-loader-md {
+        width: var(--width-loader-md);
+    }
+
+    .w-loader-lg {
+        width: var(--width-loader-lg);
+    }
+
+    .w-loader-xl {
+        width: var(--width-loader-xl);
     }
 
     /* Sidebar */

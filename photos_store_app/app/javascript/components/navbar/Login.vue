@@ -6,6 +6,7 @@
         </template>
         <template #content>
             <Input :passed-value="null" />
+            <Loader size="md" />
         </template>
     </Modal>
 </template>
@@ -15,6 +16,7 @@ import { ref } from 'vue'
 import Button from '@/components/reusables/Button.vue'
 import Input from '@/components/reusables/Input.vue'
 import Modal from '@/components/reusables/Modal.vue'
+import Loader from '@/components/reusables/Loader.vue'
 
 
 const isOpen = ref(false)

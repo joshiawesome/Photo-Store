@@ -2,10 +2,11 @@
 @import "./animation.css";
 @import "./button.css";
 @import "./colors.css";
+@import "./font.css";
+@import "./global.css";
 @import "./height.css";
 @import "./icon.css";
 @import "./input.css";
-@import "./font.css";
-@import "./global.css";
+@import "./loader.css";
 @import "./spacing.css";
 @import "./width.css";

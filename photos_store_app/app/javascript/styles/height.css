@@ -18,6 +18,13 @@
     --height-icon-lg: 24px;
     --height-icon-xl: 32px;
 
+    /* Loader */
+    --height-loader-xs: 16px;
+    --height-loader-sm: 24px;
+    --height-loader-md: 32px;
+    --height-loader-lg: 48px;
+    --height-loader-xl: 64px;
+
     /* Layout */
     --header-height: 64px;
 
@@ -78,6 +85,27 @@
 
     .h-icon-xl {
         height: var(--height-icon-xl);
+    }
+
+    /* Loader */
+    .h-loader-xs {
+        height: var(--height-loader-xs);
+    }
+
+    .h-loader-sm {
+        height: var(--height-loader-sm);
+    }
+
+    .h-loader-md {
+        height: var(--height-loader-md);
+    }
+
+    .h-loader-lg {
+        height: var(--height-loader-lg);
+    }
+
+    .h-loader-xl {
+        height: var(--height-loader-xl);
     }
 
     /* Navbar */

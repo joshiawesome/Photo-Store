@@ -1,0 +1,33 @@
+@layer components {
+    .loader {
+        @apply inline-block animate-spin rounded-full border-4 border-solid border-t-transparent;
+        border-right-color: var(--navy-blue);
+        border-bottom-color: var(--navy-blue);
+        border-left-color: var(--navy-blue);
+    }
+
+    .loader-xs {
+        width: var(--width-loader-xs);
+        height: var(--height-loader-xs);
+    }
+
+    .loader-sm {
+        width: var(--width-loader-sm);
+        height: var(--height-loader-sm);
+    }
+
+    .loader-md {
+        width: var(--width-loader-md);
+        height: var(--height-loader-md);
+    }
+
+    .loader-lg {
+        width: var(--width-loader-lg);
+        height: var(--height-loader-lg);
+    }
+
+    .loader-xl {
+        width: var(--width-loader-xl);
+        height: var(--height-loader-xl);
+    }
+}
