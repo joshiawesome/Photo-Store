@@ -6,7 +6,6 @@
         </template>
         <template #content>
             <Input :passed-value="null" />
-            <Loader size="md" />
         </template>
     </Modal>
 </template>
