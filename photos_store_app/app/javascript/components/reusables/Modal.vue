@@ -3,7 +3,7 @@
         <div v-if="isOpen" class="fixed inset-0 z-50">
             <div class="absolute inset-0 bg-black/50" />
             <div class="relative flex items-center justify-center h-full">
-                <div class="flex flex-col bg-white min-w-100 min-h-100 rounded-sm shadow-xl p-md">
+                <div class="flex flex-col gap-md bg-white min-w-100 min-h-50 rounded-sm shadow-xl p-md">
                     <!-- Header -->
                     <div class="flex justify-between items-center">
                         <div class="h-8">
