@@ -73,7 +73,8 @@ bin/vite dev
 
 # Styling
 1. Use Tailwind CSS for styling
-2. Use the `spacing.css` file for spacing utilities
-3. Use the `colors.css` file for color utilities
-4. Use the `animation.css` file for animation utilities
-5. Use the `button.css` file for button utilities
+2. Use the `animation.css` file for animation utilities
+3. Use the `button.css` file for button utilities
+4. Use the `colors.css` file for color utilities
+5. Use the `font.css` file for font utilities
+6. Use the `spacing.css` file for spacing utilities

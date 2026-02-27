@@ -1,0 +1,45 @@
+:root {
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-md: 16px;
+    --font-lg: 18px;
+    --font-xl: 20px;
+    --font-2xl: 24px;
+    --font-3xl: 30px;
+    --font-4xl: 36px;
+}
+
+@layer utilities {
+
+    .text-xs {
+        font-size: var(--font-xs);
+    }
+
+    .text-sm {
+        font-size: var(--font-sm);
+    }
+
+    .text-md {
+        font-size: var(--font-md);
+    }
+
+    .text-lg {
+        font-size: var(--font-lg);
+    }
+
+    .text-xl {
+        font-size: var(--font-xl);
+    }
+
+    .text-2xl {
+        font-size: var(--font-2xl);
+    }
+
+    .text-3xl {
+        font-size: var(--font-3xl);
+    }
+
+    .text-4xl {
+        font-size: var(--font-4xl);
+    }
+}

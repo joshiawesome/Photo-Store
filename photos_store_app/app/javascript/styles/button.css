@@ -19,15 +19,18 @@
     }
 
     .btn-sm {
-        @apply px-2 py-1 text-sm h-5.5
+        @apply px-2 py-1 h-5.5;
+        font-size: var(--font-sm);
     }
 
     .btn-md {
-        @apply px-4 py-2 h-8
+        @apply px-4 py-2 h-8;
+        font-size: var(--font-md);
     }
 
     .btn-lg {
-        @apply px-6 py-3 text-lg h-10.5
+        @apply px-6 py-3 h-10.5;
+        font-size: var(--font-lg);
     }
 
     .btn-primary {
