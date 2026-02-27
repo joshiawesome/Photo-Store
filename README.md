@@ -1,5 +1,8 @@
-# Photo-Store
+# Authors
+- Jhosiah Felips
+- Karthik Krishna Balakrishna
 
+# Photo-Store
 This is a Vue on Rails photo store application with hot reload.
 
 # Concept
@@ -70,6 +73,9 @@ bin/vite dev
 # Rails Console
 1. Run `rails console` to open the console.
 2. Run `exit!` to exit the console.
+
+# API Calls
+1. Use the `useApi` hook to make API calls
 
 # Styling
 1. Use Tailwind CSS for styling
