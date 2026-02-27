@@ -1,0 +1,43 @@
+/* input.css */
+
+@layer components {
+    .input {
+        @apply w-full rounded-sm border transition-all duration-200 outline-none;
+        background-color: var(--white);
+        border-color: var(--gray-200);
+    }
+
+    .input:disabled {
+        @apply cursor-not-allowed opacity-60;
+        background-color: #f9fafb;
+    }
+
+    /* Sizes */
+    .input-sm {
+        height: var(--height-input-sm);
+        font-size: var(--font-sm);
+        padding: var(--spacing-xs);
+    }
+
+    .input-md {
+        height: var(--height-input-md);
+        font-size: var(--font-md);
+        padding: var(--spacing-sm);
+    }
+
+    .input-lg {
+        height: var(--height-input-lg);
+        font-size: var(--font-lg);
+        padding: var(--spacing-md);
+    }
+
+    /* Error State */
+    .input-error {
+        border-color: var(--red);
+    }
+
+    .input-error:focus {
+        box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
+
+}

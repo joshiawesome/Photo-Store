@@ -3,13 +3,13 @@
         <div v-if="isOpen" class="fixed inset-0 z-50">
             <div class="absolute inset-0 bg-black/50" />
             <div class="relative flex items-center justify-center h-full">
-                <div class="flex flex-col gap-md bg-white min-w-100 min-h-50 rounded-sm shadow-xl p-md">
+                <div :class="`flex flex-col gap-md bg-white rounded-sm shadow-xl p-md w-modal-${size}`">
                     <!-- Header -->
                     <div class="flex justify-between items-center">
-                        <div class="h-8">
+                        <div>
                             <slot name="header-text" />
                         </div>
-                        <XMarkIcon class="w-6 h-6 cursor-pointer" @click="close" />
+                        <XMarkIcon class="icon icon-lg" @click="close" />
                     </div>
                     <!-- Content -->
                     <div class="flex-1">
@@ -37,6 +37,7 @@ interface Props {
     cancelText?: string
     isSubmitDisabled?: boolean
     onSubmit?: () => void
+    size?: 'sm' | 'md' | 'lg'
 
 }
 
@@ -44,11 +45,12 @@ const props = withDefaults(defineProps<Props>(), {
     submitText: "Submit",
     cancelText: "Cancel",
     isSubmitDisabled: false,
-    onSubmit: () => { }
+    onSubmit: () => { },
+    size: "sm"
 })
 
 // Convert prop to ref for reactivity
-const { isOpen, submitText, cancelText, isSubmitDisabled, onSubmit } = toRefs(props)
+const { isOpen, submitText, cancelText, isSubmitDisabled, onSubmit, size } = toRefs(props)
 
 
 const emit = defineEmits(['update:isOpen'])

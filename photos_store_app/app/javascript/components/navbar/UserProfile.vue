@@ -1,7 +1,7 @@
 <template>
     <IconPopOver>
         <template #trigger>
-            <UserCircleIcon class="w-8 h-8 text-white cursor-pointer" />
+            <UserCircleIcon class="icon icon-xl text-white" />
         </template>
         <template #content>
             Content

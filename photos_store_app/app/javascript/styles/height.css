@@ -1,0 +1,102 @@
+/* height.css */
+
+:root {
+    /* Input Heights */
+    --height-input-sm: 32px;
+    --height-input-md: 40px;
+    --height-input-lg: 48px;
+
+    /* Button Heights */
+    --height-btn-sm: 30px;
+    --height-btn-md: 36px;
+    --height-btn-lg: 44px;
+
+    /* Icon */
+    --height-icon-xs: 12px;
+    --height-icon-sm: 16px;
+    --height-icon-md: 20px;
+    --height-icon-lg: 24px;
+    --height-icon-xl: 32px;
+
+    /* Layout */
+    --header-height: 64px;
+
+    /* Navigation */
+    --navbar-height: 60px;
+    --sub-navbar-height: 48px;
+
+    /* Modal */
+    --modal-header-height: 56px;
+    --modal-footer-height: 64px;
+
+}
+
+@layer utilities {
+
+    /* Input */
+    .h-input-sm {
+        height: var(--height-input-sm);
+    }
+
+    .h-input-md {
+        height: var(--height-input-md);
+    }
+
+    .h-input-lg {
+        height: var(--height-input-lg);
+    }
+
+    /* Button */
+    .h-btn-sm {
+        height: var(--height-btn-sm);
+    }
+
+    .h-btn-md {
+        height: var(--height-btn-md);
+    }
+
+    .h-btn-lg {
+        height: var(--height-btn-lg);
+    }
+
+    /* Icon */
+    .h-icon-xs {
+        height: var(--height-icon-xs);
+    }
+
+    .h-icon-sm {
+        height: var(--height-icon-sm);
+    }
+
+    .h-icon-md {
+        height: var(--height-icon-md);
+    }
+
+    .h-icon-lg {
+        height: var(--height-icon-lg);
+    }
+
+    .h-icon-xl {
+        height: var(--height-icon-xl);
+    }
+
+    /* Navbar */
+    .h-navbar {
+        height: var(--navbar-height);
+    }
+
+    .h-sub-navbar {
+        height: var(--sub-navbar-height);
+    }
+
+    /* Modal Sections */
+    .h-modal-header {
+        height: var(--modal-header-height);
+    }
+
+    .h-modal-footer {
+        height: var(--modal-footer-height);
+    }
+
+
+}

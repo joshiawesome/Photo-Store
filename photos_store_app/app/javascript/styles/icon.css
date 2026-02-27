@@ -1,0 +1,74 @@
+/* icon.css */
+
+@layer components {
+
+    /* Base Icon */
+    .icon {
+        @apply inline-flex items-center justify-center shrink-0 cursor-pointer;
+        line-height: 0;
+    }
+
+    .icon svg {
+        @apply w-full h-full;
+    }
+
+    /* Sizes */
+    .icon-xs {
+        width: var(--width-icon-xs);
+        height: var(--height-icon-xs);
+    }
+
+    .icon-sm {
+        width: var(--width-icon-sm);
+        height: var(--height-icon-sm);
+    }
+
+    .icon-md {
+        width: var(--width-icon-md);
+        height: var(--height-icon-md);
+    }
+
+    .icon-lg {
+        width: var(--width-icon-lg);
+        height: var(--height-icon-lg);
+    }
+
+    .icon-xl {
+        width: var(--width-icon-xl);
+        height: var(--height-icon-xl);
+    }
+
+    /* Color Variants */
+    .icon-primary {
+        color: var(--orange);
+    }
+
+    .icon-muted {
+        color: var(--gray-500);
+    }
+
+    .icon-danger {
+        color: var(--red-500);
+    }
+
+    /* Inside Button */
+    .btn .icon {
+        @apply mr-2;
+    }
+
+    /* Input with Icon (prefix) */
+    .input-with-icon {
+        @apply relative;
+    }
+
+    .input-with-icon .icon {
+        @apply absolute left-3;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .input-with-icon input {
+        @apply pl-10;
+    }
+
+}

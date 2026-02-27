@@ -1,0 +1,103 @@
+/* width.css */
+
+:root {
+    /* Layout Containers */
+    --layout-max-width: 1280px;
+    --width-container-sm: 640px;
+    --width-container-md: 768px;
+    --width-container-lg: 1024px;
+    --width-container-xl: 1280px;
+
+    /* Modal Widths */
+    --width-modal-sm: 400px;
+    --width-modal-md: 500px;
+    --width-modal-lg: 700px;
+    --width-modal-xl: 900px;
+
+    /* Icon */
+    --width-icon-xs: 12px;
+    --width-icon-sm: 16px;
+    --width-icon-md: 20px;
+    --width-icon-lg: 24px;
+    --width-icon-xl: 32px;
+
+    /* Sidebar */
+    --sidebar-width: 260px;
+}
+
+@layer utilities {
+
+    /* Layout Containers */
+    .w-layout {
+        max-width: var(--layout-max-width);
+        width: 100%;
+    }
+
+    .w-container-sm {
+        max-width: var(--width-container-sm);
+        width: 100%;
+    }
+
+    .w-container-md {
+        max-width: var(--width-container-md);
+        width: 100%;
+    }
+
+    .w-container-lg {
+        max-width: var(--width-container-lg);
+        width: 100%;
+    }
+
+    .w-container-xl {
+        max-width: var(--width-container-xl);
+        width: 100%;
+    }
+
+    /* Modal Widths */
+    .w-modal-sm {
+        width: var(--width-modal-sm);
+    }
+
+    .w-modal-md {
+        width: var(--width-modal-md);
+    }
+
+    .w-modal-lg {
+        width: var(--width-modal-lg);
+    }
+
+    .w-modal-xl {
+        width: var(--width-modal-xl);
+    }
+
+    /* Icon */
+    .w-icon-xs {
+        width: var(--width-icon-xs);
+    }
+
+    .w-icon-sm {
+        width: var(--width-icon-sm);
+    }
+
+    .w-icon-md {
+        width: var(--width-icon-md);
+    }
+
+    .w-icon-lg {
+        width: var(--width-icon-lg);
+    }
+
+    .w-icon-xl {
+        width: var(--width-icon-xl);
+    }
+
+    /* Sidebar */
+    .w-sidebar {
+        width: var(--sidebar-width);
+    }
+
+    /* Full & Fit */
+    .w-fit-content {
+        width: fit-content;
+    }
+}

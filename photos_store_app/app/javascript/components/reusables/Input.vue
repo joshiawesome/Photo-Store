@@ -1,16 +1,15 @@
 <template>
-    <div>
-        <!-- html attribute binding is done here -->
-        <input id="photos_app_input_box" :type="inputType" :placeholder="placeholder" :value="inputValue"
-            :min="isNumberInput ? min : undefined" :max="isNumberInput ? max : undefined"
-            :step="isNumberInput ? step : undefined" :disabled="isDisabled" @input="handleOnChange" />
-    </div>
+    <!-- html attribute binding is done here -->
+    <input id="photos_app_input_box" :class="`input input-${size}`" :type="inputType" :placeholder="placeholder"
+        :value="inputValue" :min="isNumberInput ? min : undefined" :max="isNumberInput ? max : undefined"
+        :step="isNumberInput ? step : undefined" :disabled="isDisabled" @input="handleOnChange" />
+
 </template>
 
 <script lang="ts" setup>
 import { computed, InputTypeHTMLAttribute, ref, watch } from 'vue'
 
-
+// outline - none focus: outline - none focus: ring - 0
 type IValue = string | number | null
 
 interface Props {
@@ -23,6 +22,7 @@ interface Props {
     isDisabled?: boolean
     debounceDelay?: number
     onChange?: (value: IValue) => void
+    size?: 'sm' | 'md' | 'lg'
 }
 
 // the below snippet converts all props to props['propName'] format; reactivity is not lost
@@ -31,7 +31,8 @@ const props = withDefaults(defineProps<Props>(), {
     inputType: "text",
     placeholder: "type here...",
     debounceDelay: 300,
-    isDisabled: false
+    isDisabled: false,
+    size: "md"
 })
 
 
