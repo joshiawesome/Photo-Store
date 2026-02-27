@@ -77,4 +77,7 @@ bin/vite dev
 3. Use the `button.css` file for button utilities
 4. Use the `colors.css` file for color utilities
 5. Use the `font.css` file for font utilities
-6. Use the `spacing.css` file for spacing utilities
+6. Use the `height.css` file for height utilities
+7. Use the `icon.css` file for icon utilities
+8. Use the `spacing.css` file for spacing utilities
+9. Use the `width.css` file for width utilities
