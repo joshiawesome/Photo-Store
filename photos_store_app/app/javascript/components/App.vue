@@ -8,7 +8,7 @@
 import { onMounted } from 'vue'
 import NavBar from '@/components/navbar/NavBar.vue'
 import { IPhotoConfig, usePhotosStore } from '@/stores/photosStore'
-import { useAPI } from '@/hooks/usey'
+import { useAPI } from '@/hooks/useAPI'
 
 const externalPhotosAPI = useAPI<{}, {}>()
 const internalPhotosAPI = useAPI<IPhotoConfig[], {}>()
