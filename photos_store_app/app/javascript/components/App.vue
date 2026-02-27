@@ -17,7 +17,6 @@ import { IPhotoConfig, usePhotosStore } from '@/stores/photosStore'
 import LoaderScreen from '@/components/reusables/LoaderScreen.vue'
 import { useAPI } from '@/hooks/useAPI'
 
-
 const externalPhotosAPI = useAPI<{}, {}>()
 const internalPhotosAPI = useAPI<IPhotoConfig[], {}>()
 
