@@ -9,7 +9,6 @@
 <script lang="ts" setup>
 import { computed, InputTypeHTMLAttribute, ref, watch } from 'vue'
 
-// outline - none focus: outline - none focus: ring - 0
 type IValue = string | number | null
 
 interface Props {
