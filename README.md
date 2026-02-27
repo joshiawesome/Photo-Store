@@ -79,5 +79,7 @@ bin/vite dev
 5. Use the `font.css` file for font utilities
 6. Use the `height.css` file for height utilities
 7. Use the `icon.css` file for icon utilities
-8. Use the `spacing.css` file for spacing utilities
-9. Use the `width.css` file for width utilities
+8. Use the `input.css` file for input utilities
+9. Use the `loader.css` file for loader utilities
+10. Use the `spacing.css` file for spacing utilities
+11. Use the `width.css` file for width utilities
