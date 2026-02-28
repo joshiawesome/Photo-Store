@@ -5,7 +5,10 @@
             <div class="text-2xl">Welcome Back!</div>
         </template>
         <template #content>
-            <Input :passed-value="null" />
+            <div class="flex flex-col gap-sm">
+                <Input input-type="email" :passed-value="null" placeholder="Email" />
+                <Input input-type="password" :passed-value="null" placeholder="Password" />
+            </div>
         </template>
     </Modal>
 </template>
