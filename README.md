@@ -89,3 +89,7 @@ bin/vite dev
 9. Use the `loader.css` file for loader utilities
 10. Use the `spacing.css` file for spacing utilities
 11. Use the `width.css` file for width utilities
+
+# Testing
+1. run `rails test` to run tests from the root directory/bin
+2. run `rails test test/models` to run tests from the test/models/photo_test.rb file
