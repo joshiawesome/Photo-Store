@@ -17,7 +17,8 @@ This is a Vue on Rails photo store application with hot reload.
 3. Tailwind CSS for styling
 4. Vite for frontend build tool
 5. Pinia for state management
-6. SQLite for database
+6. SQLite for database (local)
+7. PostgreSQL for database (remote)
 
 # Vs Code Extensions
 1. Vue (Official)
