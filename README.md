@@ -74,6 +74,16 @@ bin/vite dev
 1. Run `rails console` to open the console.
 2. Run `exit!` to exit the console.
 
+# Rails Routes
+1. Run `rails routes` from the root directory/bin to see the routes
+2. Check for prefix column
+3. Path will be prefix + _url
+
+# Testing with Rails
+1. run `rails test` to run tests from the root directory/bin
+2. run `rails test test/directory` to run tests from the test/directory/ file
+
+
 # API Calls
 1. Use the `useAPI` hook to make API calls
 
@@ -90,6 +100,3 @@ bin/vite dev
 10. Use the `spacing.css` file for spacing utilities
 11. Use the `width.css` file for width utilities
 
-# Testing
-1. run `rails test` to run tests from the root directory/bin
-2. run `rails test test/models` to run tests from the test/models/photo_test.rb file
