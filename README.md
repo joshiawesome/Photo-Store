@@ -54,7 +54,7 @@ npm install
 
 
 # Start Rails backend
-rails db:prepare
+rails db:setup
 rails s
 
 # Start Vite development server parallel to the Rails server
