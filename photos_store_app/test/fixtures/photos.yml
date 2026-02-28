@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# fixture files are used to populate the database with test data
+# used by the test cases in test/models/photo_test.rb
 
+# fixture data
 one:
-  title: MyString
-  image_url: MyString
-  external_id: MyString
+  name: "Sunset"
+  external_id: "a"
+  image_url: "https://example.com/sunset.jpg"
+  price: 10.00
 
 two:
-  title: MyString
-  image_url: MyString
-  external_id: MyString
+  name: "Ocean"
+  external_id: "b"
+  image_url: "https://example.com/ocean.jpg"
+  price: 12.50

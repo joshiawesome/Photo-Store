@@ -74,15 +74,23 @@ bin/vite dev
 1. Run `rails console` to open the console.
 2. Run `exit!` to exit the console.
 
+# DB
+- migrations are like commit history for the database
+1. Run `bin/rails db:migrate` to migrate the database
+2. Run `bin/rails db:migrate RAILS_ENV=test` to migrate the test database/schema
+3. Run `bin/rails g migration MIGRATION_NAME` to generate a migration
+4. To open the sqlite database, run `sqlite3 db/development.sqlite3` and `.quit` to exit
+
 # Rails Routes
 1. Run `rails routes` from the root directory/bin to see the routes
 2. Check for prefix column
 3. Path will be prefix + _url
 
 # Testing with Rails
-1. run `rails test` to run tests from the root directory/bin
-2. run `rails test test/directory` to run tests from the test/directory/ file
-
+1. Framework: Minitest + RSpec
+2. run `rails test` to run tests from the root directory/bin
+3. run `rails test test/directory_name` to run tests from root directory/bin
+4. run `bundle exec rspec spec/directory_name` to run rspec tests from the spec/directory_name/ file
 
 # API Calls
 1. Use the `useAPI` hook to make API calls

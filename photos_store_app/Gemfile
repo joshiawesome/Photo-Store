@@ -77,4 +77,9 @@ gem "vite_rails", "~> 3.0"
 
 gem "httparty"
 
+group :test do
+  gem 'rspec-rails'
+  gem 'webmock'
+end
+
 

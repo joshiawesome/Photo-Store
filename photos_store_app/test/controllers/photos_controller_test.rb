@@ -9,6 +9,7 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index as json" do
     # as: :json is a Ruby Hash - translates to key: value
+    # the above is Rails Test Syntax
     get photos_url, as: :json
     assert_response :success
   end
