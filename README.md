@@ -51,7 +51,9 @@ run the commands below in the photos_store_app directory:
 # Install frontend dependencies
 npm install
 
+
 # Start Rails backend
+rails db:prepare
 rails s
 
 # Start Vite development server parallel to the Rails server
