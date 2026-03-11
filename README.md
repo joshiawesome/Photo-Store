@@ -51,6 +51,7 @@ This is a Vue on Rails photo store application with hot reload.
 run the commands below in the photos_store_app directory:
 # Install frontend dependencies
 npm install
+bundle install
 
 
 # Start Rails backend
