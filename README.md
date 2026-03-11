@@ -50,16 +50,16 @@ This is a Vue on Rails photo store application with hot reload.
 
 run the commands below in the photos_store_app directory:
 # Install frontend dependencies
-npm install
-bundle install
+- npm install
+- bundle install
 
 
 # Start Rails backend
-rails db:setup
-rails s
+- rails db:setup
+- rails s
 
 # Start Vite development server parallel to the Rails server
-bin/vite dev
+- bin/vite dev
 
 # To add a RubyGem
 1. Navigate to the `Gemfile` and add the gem
