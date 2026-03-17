@@ -1,13 +1,13 @@
 <template>
     <Button label="Sign Up" @click="openForm" />
-    <Modal v-model:is-open="isOpen" :onSubmit="onSubmit">
+    <Modal v-model:is-open="isFormOpen" :onSubmit="onSubmit">
         <template #header-text>
             <div class="text-2xl">Sign Up!</div>
         </template>
         <template #content>
             <div class="flex flex-col gap-sm">
                 <Input input-type="email" :passed-value="null" placeholder="Email"
-                    v-on:change="onChange($event, 'email')" :error="errors.email?.[0]"/>
+                    v-on:change="onChange($event, 'email')" :error="errors.email?.[0]" />
                 <Input input-type="password" :passed-value="null" placeholder="Password"
                     v-on:change="onChange($event, 'password')" :error="errors.password?.[0]" />
             </div>
@@ -22,9 +22,9 @@ import Input, { IValue } from '@/components/reusables/Input.vue'
 import { IUser, IUserField } from '@/types/user.types'
 import Modal from '@/components/reusables/Modal.vue'
 import { useAPI } from '@/hooks/useAPI'
+import { useToastStore } from '@/stores/toastStore'
 
-
-const isOpen = ref(false)
+const isFormOpen = ref(false)
 const formData: IUser = {
     user: {
         email: '',
@@ -35,16 +35,16 @@ const errors = ref<Record<string, string[]>>({})
 const createUserAPI = useAPI<{}, IUser>()
 
 
-watch(isOpen, (newVal) => {
-  if (!newVal) {
-    formData.user.email = ''
-    formData.user.password = ''
-    errors.value = {}
-  }
+watch(isFormOpen, (newVal) => {
+    if (!newVal) {
+        formData.user.email = ''
+        formData.user.password = ''
+        errors.value = {}
+    }
 })
 
 const openForm = () => {
-    isOpen.value = true
+    isFormOpen.value = true
 }
 
 const onChange = (value: IValue, type: IUserField) => formData.user[type] = value as string
@@ -57,8 +57,15 @@ const onSubmit = async () => {
             method: "POST",
             body: formData
         })
-        isOpen.value = false
+
+        isFormOpen.value = false
+        
+        useToastStore().showtoast({
+            message: "User created successfully",
+            type: "success"
+        })
     } catch (error: any) {
+        console.log(error)
         errors.value = error.data
     }
 

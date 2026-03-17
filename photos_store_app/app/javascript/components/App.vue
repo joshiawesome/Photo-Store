@@ -7,16 +7,20 @@
         Photos Loaded!
       </div>
     </div>
+    <Toast v-if="toastStore.toast_config" v-bind="toastStore.toast_config" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue'
-import NavBar from '@/components/navbar/NavBar.vue'
 import { IPhotoConfig, usePhotosStore } from '@/stores/photosStore'
 import LoaderScreen from '@/components/reusables/LoaderScreen.vue'
+import NavBar from '@/components/navbar/NavBar.vue'
+import Toast from '@/components/reusables/Toast.vue'
 import { useAPI } from '@/hooks/useAPI'
+import { useToastStore } from '@/stores/toastStore'
 
+const toastStore = useToastStore()
 const externalPhotosAPI = useAPI<{}, {}>()
 const internalPhotosAPI = useAPI<IPhotoConfig[], {}>()
 
@@ -42,4 +46,6 @@ const isLoading = computed(() =>
 onMounted(() => {
   hitAPIEndpoints()
 })
+
+
 </script>

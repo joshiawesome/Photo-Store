@@ -1,6 +1,10 @@
 /* width.css */
 
 :root {
+
+    /* Toast */
+    --width-toast: 300px;
+    
     /* Layout Containers */
     --layout-max-width: 1280px;
     --width-container-sm: 640px;
@@ -33,6 +37,10 @@
 }
 
 @layer utilities {
+    /* Toast */
+    .w-toast {
+        width: var(--width-toast);
+    }
 
     /* Layout Containers */
     .w-layout {

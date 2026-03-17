@@ -1,6 +1,9 @@
 /* height.css */
 
 :root {
+    /* Toast */
+    --height-toast: 40px;
+
     /* Input Heights */
     --height-input-sm: 32px;
     --height-input-md: 40px;
@@ -39,6 +42,10 @@
 }
 
 @layer utilities {
+    /* Toast */
+    .h-toast {
+        height: var(--height-toast);
+    }
 
     /* Input */
     .h-input-sm {
