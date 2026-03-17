@@ -44,7 +44,10 @@ export function useAPI<TResponse, TBody = unknown>() {
             })
 
             if (!res.ok) {
-                throw new Error(`HTTP ${res.status}`)
+                throw {
+                    status: res.status,
+                    data: await res.json()
+                }
             }
 
             const json: TResponse = await res.json()

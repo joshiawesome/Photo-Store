@@ -1,28 +1,66 @@
 <template>
     <Button label="Sign Up" @click="openForm" />
-    <Modal v-model:is-open="isOpen" :isSubmitDisabled="true">
+    <Modal v-model:is-open="isOpen" :onSubmit="onSubmit">
         <template #header-text>
             <div class="text-2xl">Sign Up!</div>
         </template>
         <template #content>
             <div class="flex flex-col gap-sm">
-                <Input input-type="email" :passed-value="null" placeholder="Email" />
-                <Input input-type="password" :passed-value="null" placeholder="Password" />
+                <Input input-type="email" :passed-value="null" placeholder="Email"
+                    v-on:change="onChange($event, 'email')" :error="errors.email?.[0]"/>
+                <Input input-type="password" :passed-value="null" placeholder="Password"
+                    v-on:change="onChange($event, 'password')" :error="errors.password?.[0]" />
             </div>
         </template>
     </Modal>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Button from '@/components/reusables/Button.vue'
-import Input from '@/components/reusables/Input.vue'
+import Input, { IValue } from '@/components/reusables/Input.vue'
+import { IUser, IUserField } from '@/types/user.types'
 import Modal from '@/components/reusables/Modal.vue'
+import { useAPI } from '@/hooks/useAPI'
 
 
 const isOpen = ref(false)
+const formData: IUser = {
+    user: {
+        email: '',
+        password: ''
+    }
+}
+const errors = ref<Record<string, string[]>>({})
+const createUserAPI = useAPI<{}, IUser>()
+
+
+watch(isOpen, (newVal) => {
+  if (!newVal) {
+    formData.user.email = ''
+    formData.user.password = ''
+    errors.value = {}
+  }
+})
 
 const openForm = () => {
     isOpen.value = true
+}
+
+const onChange = (value: IValue, type: IUserField) => formData.user[type] = value as string
+
+
+const onSubmit = async () => {
+    try {
+        await createUserAPI.request({
+            url: "/users",
+            method: "POST",
+            body: formData
+        })
+        isOpen.value = false
+    } catch (error: any) {
+        errors.value = error.data
+    }
+
 }
 </script>

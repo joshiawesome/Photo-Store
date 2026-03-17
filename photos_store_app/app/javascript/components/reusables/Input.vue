@@ -3,13 +3,14 @@
     <input id="photos_app_input_box" :class="`input input-${size}`" :type="inputType" :placeholder="placeholder"
         :value="inputValue" :min="isNumberInput ? min : undefined" :max="isNumberInput ? max : undefined"
         :step="isNumberInput ? step : undefined" :disabled="isDisabled" @input="handleOnChange" />
+    <span v-if="error" class="text-red text-sm">{{ error }}</span>
 
 </template>
 
 <script lang="ts" setup>
 import { computed, InputTypeHTMLAttribute, ref, watch } from 'vue'
 
-type IValue = string | number | null
+export type IValue = string | number | null
 
 interface Props {
     passedValue: IValue
@@ -21,6 +22,7 @@ interface Props {
     isDisabled?: boolean
     debounceDelay?: number
     onChange?: (value: IValue) => void
+    error?: string
     size?: 'sm' | 'md' | 'lg'
 }
 
@@ -31,7 +33,8 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: "type here...",
     debounceDelay: 300,
     isDisabled: false,
-    size: "md"
+    size: "md",
+    error: ""
 })
 
 

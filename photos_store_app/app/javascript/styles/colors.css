@@ -37,6 +37,11 @@
         color: var(--dark-gray)
     }
 
+    .text-red {
+        color: var(--red)
+    }
+
+
     /* Border Colors */
     .border-gray {
         border-color: var(--gray-200)
