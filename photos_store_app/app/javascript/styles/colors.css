@@ -38,6 +38,10 @@
         background-color: var(--light-blue)
     }
 
+    .bg-red {
+        background-color: var(--red)
+    }
+
     /* Text Colors */
     .text-white {
         color: var(--white)

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  validates :email, presence: true
-  validates :password_digest, presence: true
+  validates :email, presence: { message: ::Messages::ERROR[:empty_email] }, uniqueness: { message: ::Messages::ERROR[:existing_account] }
+  validates :password, presence: { message: ::Messages::ERROR[:empty_password] }
   # automatically handles password hashing and verification
   # stores password in password_digest column
   has_secure_password

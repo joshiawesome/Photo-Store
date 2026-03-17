@@ -1,11 +1,13 @@
 <template>
     <Teleport to="body">
-        <div v-if="visible" :class="['absolute top-20 right-2 w-toast h-toast flex items-center justify-between p-sm rounded shadow-md', typeClass]">
-            <div class="flex-1 text-sm">
-                {{ message }}
+        <div v-if="visible" class="absolute top-20 right-2 w-toast h-toast rounded-b shadow-md">
+            <div class="relative w-full h-full flex items-center justify-between p-sm rounded">
+                <div :class="['absolute top-0 left-0 h-0.75 w-full', typeClass]" />
+                <div class="flex-1 text-black text-sm">
+                    {{ message }}
+                </div>
+                <XMarkIcon class="icon icon-sm" @click="close" />
             </div>
-
-            <XMarkIcon class="icon icon-sm" @click="close" />
         </div>
     </Teleport>
 </template>
@@ -40,11 +42,11 @@ onMounted(() => {
 
 const typeClass = computed(() => {
     switch (props.type) {
-        case 'success': return 'bg-green text-navy-blue text-sm'
-        case 'error': return 'bg-red text-navy-blue text-sm'
-        case 'warning': return 'bg-yellow text-navy-blue text-sm'
-        case 'info': return 'bg-light-blue text-navy-blue text-sm'
-        default: return 'bg-white text-navy-blue text-sm'
+        case 'success': return 'bg-green'
+        case 'error': return 'bg-red'
+        case 'warning': return 'bg-orange'
+        case 'info': return 'bg-light-blue'
+        default: return 'bg-white'
     }
 })
 </script>

@@ -52,11 +52,13 @@ const onChange = (value: IValue, type: IUserField) => formData.user[type] = valu
 
 const onSubmit = async () => {
     try {
-        await createUserAPI.request({
+       const response = await createUserAPI.request({
             url: "/users",
             method: "POST",
             body: formData
         })
+
+        console.log(response)
 
         isFormOpen.value = false
         
@@ -65,7 +67,6 @@ const onSubmit = async () => {
             type: "success"
         })
     } catch (error: any) {
-        console.log(error)
         errors.value = error.data
     }
 

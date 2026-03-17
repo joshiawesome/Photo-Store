@@ -10,9 +10,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :created
 
-    assert_equal "turtle@example.com", response.parsed_body["email"]
+    msg = response.parsed_body["message"]
+    assert_equal Messages::SUCCESS[:user_created], msg
 
     assert User.find_by(email: "turtle@example.com")
+  end
+
+  test "should not create user with existing account" do
+    user = User.create(email: "otter@example.com", password: "123")
+    
+    invalid_params = { user: { email: "otter@example.com", password: "123" } }
+
+    assert_no_difference "User.count" do
+      post users_url, params: invalid_params, as: :json
+    end
+  
+    assert_response :unprocessable_entity
+
+    json_response = response.parsed_body
+
+    assert json_response.key?("email")
+
+    err = json_response["email"].first
+    assert_equal Messages::ERROR[:existing_account], err
   end
 
 
@@ -29,7 +49,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert json_response.key?("email")
 
-    assert_includes json_response["email"], "can't be blank"
+    err = json_response["email"].first
+    assert_equal Messages::ERROR[:empty_email], err
   end
 
   test "should not create user with empty password" do
@@ -45,6 +66,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert json_response.key?("password")
 
-    assert_includes json_response["password"], "can't be blank"
+    err = json_response["password"].first
+    assert_equal Messages::ERROR[:empty_password], err
   end
 end
