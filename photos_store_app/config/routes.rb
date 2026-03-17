@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Route /photos to PhotosController#index
   resources :photos, only: [:index]
 
+  resources :users, only: [:create]
+
   # Optional: root path
   root "photos#index"
 
