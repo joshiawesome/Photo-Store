@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between w-full h-navbar bg-navy-blue p-sm">
         <div></div>
         <div class="h-full flex items-center gap-sm">
-            <template v-if="loginStore.login_config">
+            <template v-if="loginStore.loginConfig">
                 <UserProfile />
             </template>
             <template v-else>
