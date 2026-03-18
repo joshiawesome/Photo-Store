@@ -4,7 +4,6 @@
         :value="inputValue" :min="isNumberInput ? min : undefined" :max="isNumberInput ? max : undefined"
         :step="isNumberInput ? step : undefined" :disabled="isDisabled" @input="handleOnChange" />
     <span v-if="error" class="text-red text-sm">{{ error }}</span>
-
 </template>
 
 <script lang="ts" setup>
