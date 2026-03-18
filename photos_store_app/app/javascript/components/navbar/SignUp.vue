@@ -22,8 +22,8 @@ import Input, { IValue } from '@/components/reusables/Input.vue'
 import { IUser, IUserField } from '@/types/user.types'
 import Modal from '@/components/reusables/Modal.vue'
 import { useAPI } from '@/hooks/useAPI'
-import { useToastStore } from '@/stores/toastStore'
 import { useLoginStore } from '@/stores/loginStore'
+import { useToastStore } from '@/stores/toastStore'
 
 const isFormOpen = ref(false)
 const formData: IUser = {
