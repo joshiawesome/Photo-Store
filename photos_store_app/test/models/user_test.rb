@@ -35,6 +35,17 @@ class UserTest < ActiveSupport::TestCase
     assert_equal Messages::ERROR[:empty_email], err
   end
 
+  test "should not create a user with invalid email" do
+    user = User.new(
+      email: "test@example",
+      password: "123"
+    )
+   
+    assert_not user.save
+    err = user.errors[:email].first
+    assert_equal Messages::ERROR[:invalid_email], err
+  end
+
   test "should not create a user without password" do
     user = User.new(
       email: "test2@example.com"
