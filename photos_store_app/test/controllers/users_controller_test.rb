@@ -13,6 +13,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     msg = response.parsed_body["message"]
     assert_equal Messages::SUCCESS[:user_created], msg
 
+    email = response.parsed_body["email"]
+    assert_equal "turtle@example.com", email
+
     assert User.find_by(email: "turtle@example.com")
   end
 

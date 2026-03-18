@@ -23,6 +23,7 @@ import { IUser, IUserField } from '@/types/user.types'
 import Modal from '@/components/reusables/Modal.vue'
 import { useAPI } from '@/hooks/useAPI'
 import { useToastStore } from '@/stores/toastStore'
+import { useLoginStore } from '@/stores/loginStore'
 
 const isFormOpen = ref(false)
 const formData: IUser = {
@@ -32,7 +33,7 @@ const formData: IUser = {
     }
 }
 const errors = ref<Record<string, string[]>>({})
-const createUserAPI = useAPI<{}, IUser>()
+const createUserAPI = useAPI<{message: string, email: string}, IUser>()
 
 watch(isFormOpen, (newVal) => {
     if (!newVal) {
@@ -52,18 +53,23 @@ const onChange = (value: IValue, type: IUserField) => formData.user[type] = valu
 
 const onSubmit = async () => {
     try {
-        await createUserAPI.request({
+        const response = await createUserAPI.request({
             url: "/users",
             method: "POST",
             body: formData
         })
 
-        isFormOpen.value = false
-
+        useLoginStore().setLogin({
+            isLoggedIn: true,
+            userName: response.email
+        })
+        
         useToastStore().showtoast({
-            message: "User created successfully",
+            message: response.message,
             type: "success"
         })
+
+        isFormOpen.value = false
     } catch (error: any) {
         errors.value = error.data
     }

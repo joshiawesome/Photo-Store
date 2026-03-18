@@ -7,7 +7,7 @@
         Photos Loaded!
       </div>
     </div>
-    <Toast v-if="toastStore.toast_config" v-bind="toastStore.toast_config" />
+    <Toast v-if="toastStore.toastConfig" v-bind="toastStore.toastConfig" />
   </div>
 </template>
 

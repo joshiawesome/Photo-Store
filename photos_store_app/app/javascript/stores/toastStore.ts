@@ -2,15 +2,13 @@ import { IToastProps } from "@/components/reusables/Toast.vue";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-
-
 export const useToastStore = defineStore('toast', () => {
-    const toast_config = ref<IToastProps | null>(null)
+    const toastConfig = ref<IToastProps | null>(null)
 
 
     function showtoast(config: IToastProps) {
-        toast_config.value = config
+        toastConfig.value = config
     }
 
-    return { toast_config, showtoast }
+    return { toastConfig, showtoast }
 })

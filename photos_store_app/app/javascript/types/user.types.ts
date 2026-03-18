@@ -6,3 +6,9 @@ export interface IUser {
 }
 
 export type IUserField = 'email' | 'password'
+
+
+export interface ILogin{
+    isLoggedIn: boolean
+    userName: string
+}

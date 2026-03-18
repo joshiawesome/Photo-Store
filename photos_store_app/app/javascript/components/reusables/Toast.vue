@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<IToastProps>(), {
 const visible = ref(true)
 
 const close = () => {
-    useToastStore().toast_config = null
+    useToastStore().toastConfig = null
     visible.value = false
 }
 
