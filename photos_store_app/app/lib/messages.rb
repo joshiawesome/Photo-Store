@@ -1,6 +1,6 @@
 module Messages
   SUCCESS = {
-    user_created: "User created successfully"
+    user_created: "Account created successfully!"
   }.freeze
 
   ERROR = {

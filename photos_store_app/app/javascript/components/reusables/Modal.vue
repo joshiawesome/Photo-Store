@@ -18,7 +18,7 @@
                     <!-- Footer -->
                     <div class="flex justify-end gap-sm">
                         <Button :label="cancelText" variant="secondary" @click="close" />
-                        <Button :label="submitText" :isDisabled="isSubmitDisabled" @click="onSubmit" />
+                        <Button :label="submitText" :isDisabled="isSubmitDisabled" @click="onSubmit" :isLoading="isLoadingOnSubmit" />
                     </div>
                 </div>
             </div>
@@ -37,6 +37,7 @@ interface Props {
     cancelText?: string
     isSubmitDisabled?: boolean
     onSubmit?: () => void
+    isLoadingOnSubmit?: boolean
     size?: 'sm' | 'md' | 'lg'
 
 }
@@ -46,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
     cancelText: "Cancel",
     isSubmitDisabled: false,
     onSubmit: () => { },
+    isLoadingOnSubmit: false,
     size: "sm"
 })
 

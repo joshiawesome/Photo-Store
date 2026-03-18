@@ -14,7 +14,9 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, computed } from 'vue'
+import { useToastStore } from '@/stores/toastStore'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+
 
 export interface IToastProps {
     message: string
@@ -30,6 +32,7 @@ const props = withDefaults(defineProps<IToastProps>(), {
 const visible = ref(true)
 
 const close = () => {
+    useToastStore().toast_config = null
     visible.value = false
 }
 
