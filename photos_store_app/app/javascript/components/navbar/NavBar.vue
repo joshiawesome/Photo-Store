@@ -6,7 +6,6 @@
                 <UserProfile />
             </template>
             <template v-else>
-                <UserProfile />
                 <Login />
                 <SignUp />
             </template>
