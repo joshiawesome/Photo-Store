@@ -5,7 +5,7 @@
         </div>
 
         <div v-if="open" ref="floating" :style="floatingStyles"
-            class="bg-white shadow-lg p-sm rounded border border-gray">
+            class="bg-white shadow-lg rounded border border-gray">
             <slot name="content" />
         </div>
     </div>
@@ -24,6 +24,13 @@ const { placement = "bottom" } = defineProps<Props>()
 const open = ref(false)
 const reference = ref<HTMLElement | null>(null)
 const floating = ref<HTMLElement | null>(null)
+
+
+defineExpose({
+  open: () => (open.value = true),
+  close: () => (open.value = false),
+  toggle: () => (open.value = !open.value),
+})
 
 const { update, floatingStyles } = useFloating(reference, floating, {
     placement,
