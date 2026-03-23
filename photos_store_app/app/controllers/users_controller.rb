@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            # auto login the user
+            session[:user_id] = @user.id
+
             # deliver_later uses background job to send email
             # makes use of rails active job - quick app response unlike deliver_now
             UserMailer.welcome_email(@user).deliver_later
