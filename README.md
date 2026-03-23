@@ -56,7 +56,7 @@ run the commands below in the photos_store_app directory:
 
 # Start Rails backend
 - rails db:setup
-- rails s
+- rails server
 
 # Start Vite development server parallel to the Rails server
 - bin/vite dev
