@@ -1,35 +1,35 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: MyString
-  product_id: MyString
-  name: MyString
-  sku: MyString
+  id: "variant_1"
+  product_id: "product_1"
+  name: "Variant One"
+  sku: "variant-1"
   price_value: 9.99
-  price_currency: MyString
+  price_currency: "USD"
   compare_at_price_value: 9.99
-  compare_at_price_currency: MyString
-  stock_type: MyString
+  compare_at_price_currency: "USD"
+  stock_type: "finite"
   weight_value: 9.99
-  weight_unit: MyString
+  weight_unit: "kg"
   length: 9.99
   width: 9.99
   height: 9.99
-  dimension_unit: MyString
+  dimension_unit: "cm"
 
 two:
-  id: MyString
-  product_id: MyString
-  name: MyString
-  sku: MyString
+  id: "variant_2"
+  product_id: "product_2"
+  name: "Variant Two"
+  sku: "variant-2"
   price_value: 9.99
-  price_currency: MyString
+  price_currency: "USD"
   compare_at_price_value: 9.99
-  compare_at_price_currency: MyString
-  stock_type: MyString
+  compare_at_price_currency: "USD"
+  stock_type: "finite"
   weight_value: 9.99
-  weight_unit: MyString
+  weight_unit: "kg"
   length: 9.99
   width: 9.99
   height: 9.99
-  dimension_unit: MyString
+  dimension_unit: "cm"

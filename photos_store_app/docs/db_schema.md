@@ -58,3 +58,6 @@
 - foreign key is singular
 - migrations define table structure and relationships
 - models define relationships between database tables
+- associations are defined in models - They use naming conventions based on the target model + cardinality (one vs many)
+- db stores values as NIL by default
+- to create a db record, we can pass params - if validation is defined for the model, then those params must be passed mandatorily
