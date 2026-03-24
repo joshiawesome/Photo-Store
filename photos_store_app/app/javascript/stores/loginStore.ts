@@ -1,12 +1,12 @@
-import { ILogin } from "@/types/user.types";
+import { Login } from "@/types/user.types";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useLoginStore = defineStore('login', () => {
-    const loginConfig = ref<ILogin | null>(null)
+    const loginConfig = ref<Login | null>(null)
 
 
-    function setLogin(config: ILogin) {
+    function setLogin(config: Login) {
         loginConfig.value = config
     }
 

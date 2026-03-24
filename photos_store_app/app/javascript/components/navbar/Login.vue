@@ -19,7 +19,6 @@ import Button from '@/components/reusables/Button.vue'
 import Input from '@/components/reusables/Input.vue'
 import Modal from '@/components/reusables/Modal.vue'
 
-
 const isOpen = ref(false)
 
 const openForm = () => {

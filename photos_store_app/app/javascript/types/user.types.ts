@@ -1,14 +1,14 @@
-export interface IUser {
+export interface User {
     user:{
         email: string;
         password: string;
     }
 }
 
-export type IUserField = 'email' | 'password'
+export type UserField= 'email' | 'password'
 
 
-export interface ILogin{
+export interface Login{
     isLoggedIn: boolean
     userName: string
 }
