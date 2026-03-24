@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: "1"
+  url: MyString
+  transformed_url: MyString
+  width: 1
+  height: 1
+  imageable: one
+  imageable_type: Imageable
+
+two:
+  id: "2"
+  url: MyString
+  transformed_url: MyString
+  width: 1
+  height: 1
+  imageable: two
+  imageable_type: Imageable

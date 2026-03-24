@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  variant: one
+  description: MyText
+  color_name: MyString
+  color_swatch: MyString
+  size_name: MyString
+
+two:
+  variant: two
+  description: MyText
+  color_name: MyString
+  color_swatch: MyString
+  size_name: MyString
