@@ -60,6 +60,10 @@ RSpec.describe Photos::PhotosImporter do
 
     it 'hydrates the products table' do
       expect { described_class.import }.to change(Product, :count).by(1)
+      # the above snippet can also be written as
+      #    described_class.import
+      #    expect(Photo.count).to eq(2)
+
       
       # Product is the model class
       # product is the instance of Product - represents a row
