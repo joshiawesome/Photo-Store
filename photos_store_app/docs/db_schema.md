@@ -51,16 +51,34 @@
 - **variants** → belongs to **products**, has one **variant_attributes**
 - **images** → polymorphic (imageable_id, imageable_type) - can belong to either **products** or **variants**
 
-## In Rails
+### Rails Models & Database Basics
 
-- model name is singular
-- table name is plural
-- foreign key is singular
-- migrations define table structure and relationships
-- models define relationships between database tables
-- associations are defined in models - They use naming conventions based on the target model + cardinality (one vs many)
-- db stores values as NIL by default
-- to create a db record, we can pass params - if validation is defined for the model, then those params must be passed mandatorily
-- by default rails creates the id, created_at, updated_at columns
-- ids are auto-incremented
-- in our case, we have defined custom ids for most of the models
+1. **Naming Conventions**
+   - Model names are **singular** (e.g., `Product`).
+   - Table names are **plural** (e.g., `products`).
+   - Foreign keys are usually **singular** (e.g., `product_id`).
+
+2. **Migrations vs Models**
+   - **Migrations** define the **table structure** and **relationships** in the database.
+   - **Models** define **associations** and **business logic** in Rails.
+
+3. **Associations**
+   - Defined in models using naming conventions:
+     - `has_many :variants` → one-to-many
+     - `has_one :variant_attribute` → one-to-one
+
+   - Rails automatically provides helper methods based on the association (e.g., `build_variant_attribute`, `product.variants`).
+
+4. **Database Defaults**
+   - Columns store `NULL` by default unless specified.
+   - Rails automatically creates `id`, `created_at`, and `updated_at` columns.
+   - `id` is usually **auto-incremented**, but custom IDs can be defined if needed (as in your app).
+
+5. **Creating Records**
+   - Records can be created by passing parameters:
+
+     ```ruby
+     Product.create!(name: "Toy", slug: "toy")
+     ```
+
+   - If validations are defined in the model, the required parameters must be present or Rails will raise an error.
