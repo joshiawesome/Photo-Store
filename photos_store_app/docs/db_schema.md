@@ -23,7 +23,7 @@
 ├───────────────┤  ├───────────────┤  ├────────────────────────┤
 │ id (PK)       │  │ id (PK)       │  │ id (PK)                │
 │ product_id FK │  │ url           │  │ product_id (FK)        │
-│ name          │  │ transformed   │  │ info_type              │
+│ name          │->│ transformed   │  │ info_type              │
 │ sku           │  │ width         │  │ title                  │
 │ price_value   │  │ height        │  │ body_html              │
 │ currency      │  │ imageable_id  │  └────────────────────────┘
