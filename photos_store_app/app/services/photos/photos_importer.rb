@@ -37,7 +37,7 @@ module Photos
 
                     product_image.assign_attributes(
                         url: image_config["url"],
-                        transformed: image_config["transformedUrl"],
+                        transformed_url: image_config["transformedUrl"],
                         width: image_config["width"],
                         height: image_config["height"]
                     )
@@ -61,15 +61,15 @@ module Photos
                         # dig is a safe way to access nested hash values
                         price_value: variant_config.dig("unitPrice", "value"),
                         price_currency: variant_config.dig("unitPrice", "currency"),
-                        compare_at_price_value: variant_data.dig("compareAtPrice", "value"),
-                        compare_at_price_currency: variant_data.dig("compareAtPrice", "currency"),
-                        stock_type: variant_data.dig("stock", "type"),
-                        weight_value: variant_data.dig("weight", "value"),
-                        weight_unit: variant_data.dig("weight", "unit"),
-                        length: variant_data.dig("dimensions", "length"),
-                        width: variant_data.dig("dimensions", "width"),
-                        height: variant_data.dig("dimensions", "height"),
-                        dimension_unit: variant_data.dig("dimensions", "unit")
+                        compare_at_price_value: variant_config.dig("compareAtPrice", "value"),
+                        compare_at_price_currency: variant_config.dig("compareAtPrice", "currency"),
+                        stock_type: variant_config.dig("stock", "type"),
+                        weight_value: variant_config.dig("weight", "value"),
+                        weight_unit: variant_config.dig("weight", "unit"),
+                        length: variant_config.dig("dimensions", "length"),
+                        width: variant_config.dig("dimensions", "width"),
+                        height: variant_config.dig("dimensions", "height"),
+                        dimension_unit: variant_config.dig("dimensions", "unit")
                     )
 
                     variant.save!
@@ -80,7 +80,7 @@ module Photos
 
                     # find_or_initialize_by can't be use here because 
                     # this is a one to one relationship and variant-attribute is an object not a collection
-                    variant_attribute = variant.build_variant_attributes(
+                    variant_attribute = variant.build_variant_attribute(
                         description: variant_attributes["description"],
                         color_name: variant_attributes.dig("color", "name"),
                         color_swatch: variant_attributes.dig("color", "swatch"),
@@ -96,7 +96,7 @@ module Photos
 
                         variant_image.assign_attributes(
                             url: image_config["url"],
-                            transformed: image_config["transformedUrl"],
+                            transformed_url: image_config["transformedUrl"],
                             width: image_config["width"],
                             height: image_config["height"]
                         )
