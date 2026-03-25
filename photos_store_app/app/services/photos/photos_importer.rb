@@ -11,7 +11,10 @@ module Photos
 
             # trigger the external API and hydrate the local database
             response = HTTParty.get(url)
-            data = response.parsed_response["data"]
+
+            data = response.parsed_response["results"]
+
+            # Rails.logger.info JSON.pretty_generate(data.as_json)
 
             data.each do |config|
                 # 1. HYDRATE PRODUCTS TABLE
@@ -23,9 +26,7 @@ module Photos
                     slug: config["slug"],
                     description: config["description"],
                     state: config["state"],
-                    access: config["access"],
-                    created_at: config["created_at"],
-                    updated_at: config["updated_at"]
+                    access: config["access"]
                 )
 
                 product.save!
@@ -33,9 +34,13 @@ module Photos
                 # 2. HYDRATE THE IMAGES TABLE BASED ON PRODUCTS
 
                 config['images'].each do |image_config|
-                    product_image = product.images.find_or_initialize_by(id: image_config["id"])
+                    product_image = Image.find_or_initialize_by(id: image_config["id"])
+                    # the above snippet can also be written as
+                    # product_image  = product.images.find_or_initialize_by(id: image_config["id"])
+                    # but this could create a image record with a duplicate id as it only searched the subset of images for that product
 
                     product_image.assign_attributes(
+                        imageable: product,
                         url: image_config["url"],
                         transformed_url: image_config["transformedUrl"],
                         width: image_config["width"],
@@ -80,7 +85,10 @@ module Photos
 
                     # find_or_initialize_by can't be use here because 
                     # this is a one to one relationship and variant-attribute is an object not a collection
-                    variant_attribute = variant.build_variant_attribute(
+                    # the or condition here is used to prevent the insertion of duplicate records
+                    variant_attribute = variant.variant_attribute || variant.build_variant_attribute
+
+                    variant_attribute.assign_attributes(
                         description: variant_attributes["description"],
                         color_name: variant_attributes.dig("color", "name"),
                         color_swatch: variant_attributes.dig("color", "swatch"),
@@ -92,9 +100,10 @@ module Photos
                     # 5. HYDRATE THE IMAGES TABLE BASED ON VARIANTS
 
                     variant_config["images"].each do |image_config|
-                        variant_image = variant.images.find_or_initialize_by(id: image_config["id"])
+                        variant_image = Image.find_or_initialize_by(id: image_config["id"])
 
                         variant_image.assign_attributes(
+                            imageable: variant,
                             url: image_config["url"],
                             transformed_url: image_config["transformedUrl"],
                             width: image_config["width"],

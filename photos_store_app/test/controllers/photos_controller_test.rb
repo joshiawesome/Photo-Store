@@ -10,9 +10,16 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
     Product.delete_all
   end
 
+  test "GET index responds with HTML" do
+    get photos_url # default format is HTML
+    assert_response :success
+    assert_match /<!DOCTYPE html>/, @response.body # crude check that HTML is rendered
+  end
+
   test "should get index with products and first image" do
     product = Product.create!(id: "lego", name: "lego")
-    image = product.images.create!(id: 'lego_city', url: "https://example.com/lego_city.jpg")
+    variant = product.variants.create!(id: "lego_city_variant", name: "Lego City")
+    image = variant.images.create!(id: 'lego_city_image', url: "https://example.com/lego_city.jpg")
 
     get photos_url, as: :json
     assert_response :success

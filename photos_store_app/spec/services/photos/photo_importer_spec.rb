@@ -10,7 +10,7 @@ RSpec.describe Photos::PhotosImporter do
 
     let(:api_response) do
       {
-        "data" => [
+        "results" => [
           {
             "id" => "prod_1",
             "name" => "Product 1",
