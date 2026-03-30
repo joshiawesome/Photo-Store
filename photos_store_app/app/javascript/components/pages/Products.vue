@@ -1,19 +1,19 @@
 <template>
     <div>
-        <h2>Photos</h2>
+        <h2>Products</h2>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import { Photo } from '@/types/product.types';
+import { Product } from '@/types/product.types';
 import { useAPI } from '@/hooks/useAPI';
 
-const photosAPI = useAPI<Photo[], {}>()
+const productsAPI = useAPI<Product[], {}>()
 
 const hitAPIEndpoints = async () => {
- const response =  await photosAPI.request({
-    url: "/photos",
+ const response =  await productsAPI.request({
+    url: "/products",
     method: "GET"
   })
   

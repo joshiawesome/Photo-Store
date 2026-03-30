@@ -31,16 +31,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_24_112536) do
     t.integer "width"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
-
-  create_table "photos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "external_id"
-    t.string "image_url"
-    t.string "name"
-    t.decimal "price"
-    t.datetime "updated_at", null: false
-  end
-
+  
   create_table "products", id: :string, force: :cascade do |t|
     t.string "access"
     t.datetime "created_at", null: false

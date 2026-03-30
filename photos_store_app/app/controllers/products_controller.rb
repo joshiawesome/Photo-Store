@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class ProductsController < ApplicationController
   def index
     @products = Product.all
 
@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
   end
 
   def import
-    Photos::PhotosImporter.import
-    render json: { message: "Photos imported successfully!" }
+    Products::ProductsImporter.import
+    render json: { message: "Products imported successfully!" }
   end
 end

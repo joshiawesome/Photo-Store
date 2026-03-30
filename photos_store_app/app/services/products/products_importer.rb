@@ -1,6 +1,6 @@
 # the module/s specifies the file path
-module Photos
-    class PhotosImporter
+module Products
+    class ProductsImporter
         # Ruby Gem that allows us to make HTTP requests
         include HTTParty
         # self means the method can be called without creating an instance of the class

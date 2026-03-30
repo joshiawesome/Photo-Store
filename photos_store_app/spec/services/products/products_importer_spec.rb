@@ -1,13 +1,12 @@
-# spec/services/photos/photos_importer_spec.rb
+# spec/services/products/product_importer_spec.rb
 require 'rails_helper'
 
 # note: do not call actual API for tests
 # call the actual API for integration tests
-RSpec.describe Photos::PhotosImporter do
+RSpec.describe Products::ProductsImporter do
   describe '.import' do
     let(:api_base_url) { 'https://fake-api.com' }
     let(:api_token) { 'fake-token' }
-
     let(:api_response) do
       {
         "results" => [
@@ -62,7 +61,7 @@ RSpec.describe Photos::PhotosImporter do
       expect { described_class.import }.to change(Product, :count).by(1)
       # the above snippet can also be written as
       #    described_class.import
-      #    expect(Photo.count).to eq(2)
+      #    expect(Product.count).to eq(1)
 
       
       # Product is the model class

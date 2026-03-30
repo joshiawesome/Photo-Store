@@ -1,7 +1,7 @@
-# test/controllers/photos_controller_test.rb
+# test/controllers/products_controller_test.rb
 require "test_helper"
 
-class PhotosControllerTest < ActionDispatch::IntegrationTest
+class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     VariantAttribute.delete_all
     Image.delete_all
@@ -11,7 +11,7 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "GET index responds with HTML" do
-    get photos_url # default format is HTML
+    get products_url # default format is HTML
     assert_response :success
     assert_match /<!DOCTYPE html>/, @response.body # crude check that HTML is rendered
   end
@@ -21,7 +21,7 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
     variant = product.variants.create!(id: "lego_city_variant", name: "Lego City")
     image = variant.images.create!(id: 'lego_city_image', url: "https://example.com/lego_city.jpg")
 
-    get photos_url, as: :json
+    get products_url, as: :json
     assert_response :success
 
     json = JSON.parse(response.body)
@@ -32,12 +32,12 @@ class PhotosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should call importer and return success message" do
-    Photos::PhotosImporter.stub(:import, true) do
-      post photos_import_url, as: :json
+    Products::ProductsImporter.stub(:import, true) do
+      post products_import_url, as: :json
       assert_response :success
 
       json = JSON.parse(response.body)
-      assert_equal "Photos imported successfully!", json["message"]
+      assert_equal "Products imported successfully!", json["message"]
     end
   end
 end

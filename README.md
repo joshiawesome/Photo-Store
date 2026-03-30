@@ -9,9 +9,9 @@ This is a Vue on Rails photo store application with hot reload.
 
 # Concept
 
-- Use an external API to fetch photos
-- Hydrate the local database with the photos
-- Use Vue to display the photos
+- Use an external API to fetch products
+- Hydrate the local database with the products
+- Use Vue to display the products
 - Use Pinia to manage state
 
 # Tech stack
