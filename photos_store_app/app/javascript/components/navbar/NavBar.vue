@@ -6,16 +6,15 @@
                 <UserProfile />
             </template>
             <template v-else>
-                <Login />
-                <SignUp />
+                <Access type="login" />
+                <Access type="signup" />
             </template>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import Login from '@/components/navbar/Login.vue'
-import SignUp from '@/components/navbar/SignUp.vue'
+import Access from '@/components/navbar/Access.vue'
 import UserProfile from '@/components/navbar/UserProfile.vue'
 import { useLoginStore } from '@/stores/loginStore'
 
