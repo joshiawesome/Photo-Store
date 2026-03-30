@@ -8,6 +8,14 @@ class SessionsController < ApplicationController
       render json: { error: Messages::ERROR[:invalid_credentials] }, status: :unauthorized
     end
   end
+
+  def show
+    if current_user
+      render json: { user: current_user }, status: :ok
+    else
+      render json: { error: Messages::ERROR[:not_logged_in] }, status: :unauthorized
+    end
+  end
   
   def destroy
     reset_session

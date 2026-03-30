@@ -50,6 +50,28 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     msg = response.parsed_body["message"]
     assert_equal Messages::SUCCESS[:user_logged_out], msg
   end
-  
+
+  test "should return current user when logged in" do
+    user = User.create(email: "turtle@example.com", password: "password123")
+
+    post login_url, params: { email: "turtle@example.com", password: "password123" }, as: :json
+    assert_response :ok
+
+    get session_url, as: :json
+
+    assert_response :ok
+
+    email = response.parsed_body["user"]["email"]
+    assert_equal user.email, email
+  end
+
+  test "should return unauthorized when not logged in" do
+    get session_url, as: :json
+
+    assert_response :unauthorized
+
+    error = response.parsed_body["error"]
+    assert_equal Messages::ERROR[:not_logged_in], error
+  end
 
 end

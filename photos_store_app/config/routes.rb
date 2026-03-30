@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # sessions routes
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  get    "/session", to: "sessions#show"
 
   # Optional: root path
   root "products#index"

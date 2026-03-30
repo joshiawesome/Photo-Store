@@ -10,6 +10,7 @@ module Messages
     invalid_email: "Please enter a valid email id",
     empty_password: "Please set a password",
     existing_account: "Account already exists",
-    invalid_credentials: "Please login with valid credentials"
+    invalid_credentials: "Please login with valid credentials",
+    not_logged_in: "Not logged in"
   }.freeze
 end

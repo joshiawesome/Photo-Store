@@ -19,21 +19,21 @@
 import { computed, ref, watch } from 'vue'
 import Button from '@/components/reusables/Button.vue'
 import Input, { IValue } from '@/components/reusables/Input.vue'
-import { User, UserField} from '@/types/user.types'
+import { UserFormConfig, UserField} from '@/types/user.types'
 import Modal from '@/components/reusables/Modal.vue'
 import { useAPI } from '@/hooks/useAPI'
 import { useLoginStore } from '@/stores/loginStore'
 import { useToastStore } from '@/stores/toastStore'
 
 const isFormOpen = ref(false)
-const formData: User = {
+const formData: UserFormConfig = {
     user: {
         email: '',
         password: ''
     }
 }
 const errors = ref<Record<string, string[]>>({})
-const createUserAPI = useAPI<{message: string, email: string}, User>()
+const createUserAPI = useAPI<{message: string, email: string}, UserFormConfig>()
 
 watch(isFormOpen, (newVal) => {
     if (!newVal) {

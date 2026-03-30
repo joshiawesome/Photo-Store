@@ -1,10 +1,10 @@
 <template>
   <div>
-    <NavBar />
+    <NavBar :is-loading="isSessionLoading" />
     <div class="h-[calc(100vh-var(--navbar-height))]">
-      <LoaderScreen v-show="isLoading" />
-      <div v-show="!isLoading">
-        <Products/>
+      <LoaderScreen v-show="isProductsLoading" />
+      <div v-show="!isProductsLoading">
+        <Products />
       </div>
     </div>
     <Toast v-if="toastStore.toastConfig" v-bind="toastStore.toastConfig" />
@@ -19,9 +19,13 @@ import Products from './pages/Products.vue'
 import Toast from '@/components/reusables/Toast.vue'
 import { useAPI } from '@/hooks/useAPI'
 import { useToastStore } from '@/stores/toastStore'
+import { useLoginStore } from '@/stores/loginStore'
 
 const toastStore = useToastStore()
+const loginStore = useLoginStore()
+
 const externalProductsAPI = useAPI<{}, {}>()
+const sessionAPI = useAPI<{ user: { email: string } }>()
 
 const hitAPIEndpoints = async () => {
   await externalProductsAPI.request({
@@ -30,11 +34,24 @@ const hitAPIEndpoints = async () => {
   })
 }
 
-const isLoading = computed(() =>
-  externalProductsAPI.loading.value
-)
+const checkSession = async () => {
+  const response = await sessionAPI.request({
+    url: "/session",
+    method: "GET"
+  })
+  if (response?.user) {
+    loginStore.setLogin({
+      isLoggedIn: true,
+      userName: response.user.email
+    })
+  }
+}
+
+const isProductsLoading = computed(() => externalProductsAPI.loading.value)
+const isSessionLoading = computed(() => sessionAPI.loading.value)
 
 onMounted(() => {
   hitAPIEndpoints()
+  checkSession()
 })
 </script>
