@@ -6,14 +6,16 @@ interface IRequestProps {
     method: 'GET' | 'POST' | 'PUT' | 'DELETE'
 }
 
-const csrfToken =
-    document
-        .querySelector<HTMLMetaElement>('meta[name="csrf-token"]')
-        ?.content
-
+function getCSRFToken() {
+  return document
+    .querySelector<HTMLMetaElement>('meta[name="csrf-token"]')
+    ?.content
+}
 
 export function useAPI<TResponse, TBody = unknown>() {
-    if (!csrfToken) {
+    const token = getCSRFToken()
+    
+    if (!token) {
         throw new Error('CSRF token not found')
     }
 
@@ -36,7 +38,7 @@ export function useAPI<TResponse, TBody = unknown>() {
                 method,
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-Token': csrfToken,
+                    'X-CSRF-Token': token,
                     'Accept': 'application/json'
                 },
                 credentials: 'same-origin',

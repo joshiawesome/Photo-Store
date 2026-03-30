@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  # login
   def create
     errors = ActiveModel::Errors.new(self)
 

@@ -29,6 +29,8 @@ const onClick = async (id: string) => {
         })
 
         useLoginStore().loginConfig = null
+
+        window.location.reload()
     }
 
     userProfilePopover.value?.close()

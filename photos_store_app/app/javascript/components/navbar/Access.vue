@@ -7,10 +7,10 @@
         <template #content>
             <div class="relative flex flex-col gap-sm">
                 <Input input-type="email" :passed-value="null" placeholder="Email"
-                    v-on:change="onChange($event, 'email')" :error="errors.email?.[0]" />
+                    v-on:change="onChange($event, 'email')" :error="errors?.email?.[0]" />
                 <Input input-type="password" :passed-value="null" placeholder="Password"
-                    v-on:change="onChange($event, 'password')" :error="errors.password?.[0]" />
-                <div v-if="errors.base?.[0]" class="text-red text-sm">{{ errors.base[0] }}</div>
+                    v-on:change="onChange($event, 'password')" :error="errors?.password?.[0]" />
+                <div v-if="errors?.base?.[0]" class="text-red text-sm">{{ errors.base[0] }}</div>
             </div>
         </template>
     </Modal>
@@ -39,14 +39,14 @@ const formData: UserFormConfig = {
         password: ''
     }
 }
-const errors = ref<Record<string, string[]>>({})
+const errors = ref<Record<string, string[]> | null>(null)
 const createUserAPI = useAPI<{message: string, email: string}, UserFormConfig>()
 
 watch(isFormOpen, (newVal) => {
     if (!newVal) {
         formData.user.email = ''
         formData.user.password = ''
-        errors.value = {}
+        errors.value = null
     }
 })
 const isLoading = computed(() => createUserAPI.loading.value)
