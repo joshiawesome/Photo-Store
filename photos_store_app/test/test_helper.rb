@@ -10,7 +10,13 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    # Suppress Elasticsearch HTTP logs in tests
+    if defined?(Elasticsearch::Model)
+      Elasticsearch::Model.client = Elasticsearch::Client.new(
+        url: ENV.fetch("ELASTICSEARCH_URL"),
+        log: false
+      )
+    end
   end
 end
 
