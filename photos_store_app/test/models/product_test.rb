@@ -1,6 +1,16 @@
 require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
+  setup do
+    # Create fresh index
+    Product.__elasticsearch__.create_index!(force: true)
+  end
+
+  teardown do
+    # Clean up after test
+    Product.__elasticsearch__.delete_index!
+  end
+
   test "has many variants association definition" do
     assoc = Product.reflect_on_association(:variants)
     assert_equal :has_many, assoc.macro
@@ -44,5 +54,18 @@ class ProductTest < ActiveSupport::TestCase
     AdditionalInformation.create!(product: product, title:'Lego Creator Instructions')
 
     assert_equal 2, product.additional_informations.count
+  end
+
+  test "search_by_name returns correct results" do
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("lego").records.to_a
+
+    assert_includes results.map(&:name), "Lego City"
+    assert_includes results.map(&:name), "Lego Creator"
   end
 end

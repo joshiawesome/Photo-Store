@@ -46,6 +46,15 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  # Disable Elasticsearch callbacks during testing
+  config.before(:each) do
+    # Stub Elasticsearch methods to prevent real connections
+    elasticsearch_double = double('elasticsearch', index_name: 'products')
+    allow(elasticsearch_double).to receive(:index_document)
+    allow(elasticsearch_double).to receive(:delete_document)
+    allow_any_instance_of(Product).to receive(:__elasticsearch__).and_return(elasticsearch_double)
+  end
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 

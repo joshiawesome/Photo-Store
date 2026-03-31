@@ -77,6 +77,7 @@ Steps:
 
 ```
 docker run -d `
+  --name elastic_search_container `
   -p 9200:9200 `
   -e "discovery.type=single-node" `
   -e "xpack.security.enabled=false" `
@@ -87,6 +88,7 @@ In mac run:
 
 ```
 docker run -d \
+  --name elastic_search_container \
   -p 9200:9200 \
   -e "discovery.type=single-node" \
   -e "xpack.security.enabled=false" \
@@ -99,36 +101,47 @@ docker run -d \
 docker ps
 ```
 
-4. To stop the containers, run:
+4. To start the container, run:
 
 ```
-docker stop <container_id>
+docker start elastic_search_container
 ```
 
-5. To remove the containers, run:
+5. To stop the container, run:
 
 ```
-docker rm <container_id>
+docker stop elastic_search_container
 ```
 
-6. To restart the containers, run:
+6. To remove the container, run:
 
 ```
-docker start <container_id> or
-docker restart <container_id>
+docker rm elastic_search_container
 ```
 
-7. Test if docker is running on port:
+7. To restart the container, run:
+
+```
+docker restart elastic_search_container
+```
+
+8. Test if docker is running on port:
 
 ```
 curl http://localhost:9200
 ```
 
-8. Test docker in rails console:
+9. Test docker in rails console:
 
 ```
 rails console
-Elasticsearch::Model.client.info
+Elasticsearch::Model.client.info - this should return the elasticsearch info
+```
+
+10. Run the following command to rebuild the elasticsearch index:
+
+```
+rails es:rebuild_products
 ```
 
 # Start Rails backend
