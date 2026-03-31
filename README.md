@@ -22,7 +22,8 @@ This is a Vue on Rails photo store application with hot reload.
 4. Vite for frontend build tool
 5. Pinia for state management
 6. SQLite for database (local)
-7. PostgreSQL for database (remote)
+7. PostgreSQL for database (for production)
+8. Docker to run elastic search.
 
 # Vs Code Extensions
 
@@ -60,6 +61,75 @@ run the commands below in the photos_store_app directory:
 
 - npm install
 - bundle install
+
+# Docker setup
+
+Intro:
+
+- Docker is a platform to create, deploy, and run applications by using containers.
+- Images are the blueprint for containers - think of it like the recipe for a cake.
+- Containers are instances of images - think of it like the actual cake.
+
+Steps:
+
+1. Install Docker from https://www.docker.com/
+2. In windows run:
+
+```
+docker run -d `
+  -p 9200:9200 `
+  -e "discovery.type=single-node" `
+  -e "xpack.security.enabled=false" `
+  elasticsearch:8.12.0
+```
+
+In mac run:
+
+```
+docker run -d \
+  -p 9200:9200 \
+  -e "discovery.type=single-node" \
+  -e "xpack.security.enabled=false" \
+  elasticsearch:8.12.0
+```
+
+3. To view running containers, run:
+
+```
+docker ps
+```
+
+4. To stop the containers, run:
+
+```
+docker stop <container_id>
+```
+
+5. To remove the containers, run:
+
+```
+docker rm <container_id>
+```
+
+6. To restart the containers, run:
+
+```
+docker start <container_id> or
+docker restart <container_id>
+```
+
+7. Test if docker is running on port:
+
+```
+curl http://localhost:9200
+```
+
+8. Test docker in rails console:
+
+```
+rails console
+Elasticsearch::Model.client.info
+```
 
 # Start Rails backend
 
