@@ -17,18 +17,24 @@ import { ref } from 'vue'
 import { UserCircleIcon } from '@heroicons/vue/24/solid'
 import { useAPI } from '@/hooks/useAPI'
 import { useLoginStore } from '@/stores/loginStore'
+import { useToastStore } from '@/stores/toastStore'
 
-const sessionAPI = useAPI<{}, {}>()
+const sessionAPI = useAPI<{message: string}, {}>()
 const userProfilePopover = ref<InstanceType<typeof IconPopOver> | null>(null)
 
 const onClick = async (id: string) => {
     if (id === 'logout') {
-        await sessionAPI.request({
+        const response = await sessionAPI.request({
             url: "/logout",
             method: "DELETE"
         })
 
         useLoginStore().loginConfig = null
+    
+        useToastStore().showtoast({
+            message: response.message,
+            type: "success"
+        })
 
         window.location.reload()
     }

@@ -1,6 +1,6 @@
 <template>
     <Teleport to="body">
-        <div v-if="visible" class="absolute top-20 right-2 w-toast h-toast rounded-b shadow-md">
+        <div v-if="visible" class="bg-white absolute top-20 right-2 w-toast h-toast rounded-b shadow-md">
             <div class="relative w-full h-full flex items-center justify-between p-sm rounded">
                 <div :class="['absolute top-0 left-0 h-0.75 w-full', typeClass]" />
                 <div class="flex-1 text-black text-sm">

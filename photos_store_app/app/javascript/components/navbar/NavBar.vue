@@ -6,15 +6,15 @@
                 <UserProfile />
             </template>
             <template v-else>
-                <Access type="login" />
-                <Access type="signup" />
+                <Auth type="login" />
+                <Auth type="signup" />
             </template>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import Access from '@/components/navbar/Access.vue'
+import Auth from '@/components/navbar/Auth.vue'
 import UserProfile from '@/components/navbar/UserProfile.vue'
 import { useLoginStore } from '@/stores/loginStore'
 

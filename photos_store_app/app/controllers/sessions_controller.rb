@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # fetch session - applicable on page reload to persist session
   def show
     if current_user
       render json: { user: current_user }, status: :ok
@@ -30,6 +31,7 @@ class SessionsController < ApplicationController
     end
   end
   
+  # logout
   def destroy
     reset_session
     render json: { message: Messages::SUCCESS[:user_logged_out] }, status: :ok

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   post   "/signup",  to: "users#create"
 
-
   # sessions routes
   post   "/login",  to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
