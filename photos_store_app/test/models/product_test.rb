@@ -1,16 +1,6 @@
 require "test_helper"
 
 class ProductTest < ActiveSupport::TestCase
-  # setup do
-  #   # Create fresh index
-  #   Product.__elasticsearch__.create_index!(force: true)
-  # end
-
-  # teardown do
-  #   # Clean up after test
-  #   Product.__elasticsearch__.delete_index!
-  # end
-
   test "has many variants association definition" do
     assoc = Product.reflect_on_association(:variants)
     assert_equal :has_many, assoc.macro
