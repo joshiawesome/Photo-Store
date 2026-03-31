@@ -1,7 +1,10 @@
 <template>
     <IconPopOver ref="userProfilePopover">
         <template #trigger>
-            <UserCircleIcon class="icon icon-xl text-white" />
+            <div class="flex items-center gap-sm">
+                <span class="text-white text-sm">{{ loginStore.loginConfig?.userName }}</span>
+                <UserCircleIcon class="icon icon-xl text-white" />
+            </div>
         </template>
         <template #content>
             <List :items="AVATAR_ITEMS" @click="onClick" />
@@ -21,6 +24,7 @@ import { useToastStore } from '@/stores/toastStore'
 
 const sessionAPI = useAPI<{message: string}, {}>()
 const userProfilePopover = ref<InstanceType<typeof IconPopOver> | null>(null)
+const loginStore = useLoginStore()
 
 const onClick = async (id: string) => {
     if (id === 'logout') {
@@ -28,14 +32,13 @@ const onClick = async (id: string) => {
             url: "/logout",
             method: "DELETE"
         })
-
-        useLoginStore().loginConfig = null
     
         useToastStore().showtoast({
             message: response.message,
             type: "success"
         })
 
+        // TO-DO: need to find a better way to update the CSRF token as logout destroys the session and existing CSRF token
         window.location.reload()
     }
 

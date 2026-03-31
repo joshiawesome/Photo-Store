@@ -19,10 +19,11 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import Button from '@/components/reusables/Button.vue'
+import { getUserNameFromEmail } from '@/utils/userUtils'
 import Input, { IValue } from '@/components/reusables/Input.vue'
-import { UserFormConfig, UserField} from '@/types/user.types'
 import Modal from '@/components/reusables/Modal.vue'
 import { useAPI } from '@/hooks/useAPI'
+import { UserFormConfig, UserField} from '@/types/user.types'
 import { useLoginStore } from '@/stores/loginStore'
 import { useToastStore } from '@/stores/toastStore'
 
@@ -68,7 +69,7 @@ const onSubmit = async () => {
 
         useLoginStore().setLogin({
             isLoggedIn: true,
-            userName: response.email
+            userName: getUserNameFromEmail(response.email)
         })
         
         useToastStore().showtoast({

@@ -13,6 +13,7 @@
 
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue'
+import { getUserNameFromEmail } from '@/utils/userUtils'
 import LoaderScreen from '@/components/reusables/LoaderScreen.vue'
 import NavBar from '@/components/navbar/NavBar.vue'
 import Products from './pages/Products.vue'
@@ -44,7 +45,7 @@ const checkSession = async () => {
     if (response?.user) {
       loginStore.setLogin({
         isLoggedIn: true,
-        userName: response.user.email
+        userName: getUserNameFromEmail(response.user.email)
       })
     }
   } catch (error) {
