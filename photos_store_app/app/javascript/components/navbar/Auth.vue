@@ -40,7 +40,7 @@ const formData: UserFormConfig = {
     }
 }
 const errors = ref<Record<string, string[]> | null>(null)
-const createUserAPI = useAPI<{message: string, email: string}, UserFormConfig>()
+const authAPI = useAPI<{message: string, email: string}, UserFormConfig>()
 
 watch(isFormOpen, (newVal) => {
     if (!newVal) {
@@ -49,7 +49,7 @@ watch(isFormOpen, (newVal) => {
         errors.value = null
     }
 })
-const isLoading = computed(() => createUserAPI.loading.value)
+const isLoading = computed(() => authAPI.loading.value)
 
 const openForm = () => {
     isFormOpen.value = true
@@ -60,7 +60,7 @@ const onChange = (value: IValue, type: UserField) => formData.user[type] = value
 
 const onSubmit = async () => {
     try {
-        const response = await createUserAPI.request({
+        const response = await authAPI.request({
             url: `/${props.type}`,
             method: "POST",
             body: formData
