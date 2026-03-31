@@ -35,15 +35,20 @@ const hitAPIEndpoints = async () => {
 }
 
 const checkSession = async () => {
-  const response = await sessionAPI.request({
-    url: "/session",
-    method: "GET"
-  })
-  if (response?.user) {
-    loginStore.setLogin({
-      isLoggedIn: true,
-      userName: response.user.email
+  try{
+    const response = await sessionAPI.request({
+      url: "/session",
+      method: "GET"
     })
+
+    if (response?.user) {
+      loginStore.setLogin({
+        isLoggedIn: true,
+        userName: response.user.email
+      })
+    }
+  } catch (error) {
+    console.error('Session does not exist:', error)
   }
 }
 
