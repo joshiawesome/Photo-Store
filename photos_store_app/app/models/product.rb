@@ -62,17 +62,21 @@ class Product < ApplicationRecord
 
   # custom method for the model to search products by name
   def self.search_by_name(query)
-    __elasticsearch__.search(
-      {
-        query: {
-          match: {
-            name: {
-              query: query,
-              operator: "and"
+      if query.blank?
+        __elasticsearch__.search({ query: { match_all: {} } })
+      else
+        __elasticsearch__.search(
+          {
+            query: {
+              match: {
+                name: {
+                  query: query,
+                  operator: "and"
+                }
+              }
             }
           }
-        }
-      }
-    )
+        )
+      end
   end
 end

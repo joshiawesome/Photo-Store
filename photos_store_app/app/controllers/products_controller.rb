@@ -8,17 +8,9 @@ class ProductsController < ApplicationController
     @products = Product.all
 
     respond_to do |format|
-      format.html # renders the Vue app via index.html.erb
-
-      format.json {
-        render json: @products.map { |product|
-          {
-            id: product.id,
-            name: product.name,
-            image: product.variants.first&.images.first&.url
-          }
-        }
-      }
+      # renders the Vue app via index.html.erb
+      format.html
+      format.json { parse_products(@products) }
     end
   end
 
@@ -33,7 +25,36 @@ class ProductsController < ApplicationController
     }
   end
 
+  def filter
+     name = params[:name]
+
+     @products = if name
+       Product.search_by_name(name).records
+     else
+       Product.all
+     end 
+     
+     parse_products(@products)
+  end
+
   def search_params
     params.require(:query)
+  end
+
+  def filter_params
+    # TODO: Add price/category filtering
+    params.permit(:name, :category)
+  end
+  
+  private
+
+  def parse_products(products)
+   render json: products.map { |product|
+      {
+        id: product.id,
+        name: product.name,
+        image: product.variants.first&.images.first&.url
+      }
+    }
   end
 end

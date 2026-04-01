@@ -57,9 +57,9 @@ class ProductTest < ActiveSupport::TestCase
 
     results = Product.search_by_name("l").records.to_a
 
-    names = results.map(&:name)
-    assert_includes names, "Lego City"
-    assert_includes names, "Lego Creator"
+    ids = results.map(&:id)
+    assert_includes ids, "lego_city"
+    assert_includes ids, "lego_creator"
   end
 
   test "search_by_name returns empty results when no matches" do
@@ -73,7 +73,23 @@ class ProductTest < ActiveSupport::TestCase
 
     results = Product.search_by_name("xyz").records.to_a
 
-    names = results.map(&:name)
-    assert_empty names
+    ids = results.map(&:id)
+    assert_empty ids
+  end
+
+  test "search_by_name returns all results when query is blank" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("").records.to_a
+
+    ids = results.map(&:id)
+    assert_includes ids, "lego_city"
+    assert_includes ids, "lego_creator"
   end
 end

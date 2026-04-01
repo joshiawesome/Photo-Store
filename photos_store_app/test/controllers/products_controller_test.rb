@@ -73,4 +73,51 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_empty results
   end 
+
+    test "filter by name" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("lego").records.to_a
+
+    ids = results.map(&:id)
+    assert_includes ids, "lego_city"
+    assert_includes ids, "lego_creator"
+  end
+
+  test "filter by name returns empty results when no matches" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("xyz").records.to_a
+
+    ids = results.map(&:id)
+    assert_empty ids
+  end
+
+  test "filter should return all products when no filter is applied" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("").records.to_a
+
+    ids = results.map(&:id)
+    assert_includes ids, "lego_city"
+    assert_includes ids, "lego_creator"
+  end
 end
