@@ -11,7 +11,7 @@
             <div class="flex items-center justify-center min-h-20">
                 <Loader v-if="isSearching" size="sm" />
                 <List v-else-if="suggestions && suggestions.length" :items="suggestions" />
-                <div v-else class="text-center text-dark-gray">{{ UI_MESSAGES["NO SEARCH RESULTS"] }}</div>
+                <div v-else class="text-center text-dark-gray">{{ UI_MESSAGES["NO_SEARCH_RESULTS"] }}</div>
             </div>
         </template>
     </IconPopOver>
