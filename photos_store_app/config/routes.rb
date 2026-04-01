@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index]
   post "products/import", to: "products#import"
   get "products/search", to: "products#search"
+  get "products/filter", to: "products#filter"
 
   # users routes
   resources :users, only: [:create]

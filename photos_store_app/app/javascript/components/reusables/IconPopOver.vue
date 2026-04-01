@@ -1,11 +1,11 @@
 <template>
     <div class="relative h-full flex items-center justify-center">
-        <div ref="reference" @click="open = !open">
+        <div class="w-full" ref="reference" @click="isOpenOnClick ? open = !open : null">
             <slot name="trigger" />
         </div>
 
         <div v-if="open" ref="floating" :style="floatingStyles"
-            class="bg-white shadow-lg rounded border border-gray">
+            class="w-full bg-white shadow-lg rounded border border-gray">
             <slot name="content" />
         </div>
     </div>
@@ -17,9 +17,10 @@ import { useFloating, autoUpdate, offset, flip, shift, Placement } from "@floati
 
 interface Props {
     placement?: Placement
+    isOpenOnClick?: boolean
 }
 
-const { placement = "bottom" } = defineProps<Props>()
+const { placement = "bottom", isOpenOnClick = true } = defineProps<Props>()
 
 const open = ref(false)
 const reference = ref<HTMLElement | null>(null)
@@ -27,9 +28,9 @@ const floating = ref<HTMLElement | null>(null)
 
 
 defineExpose({
-  open: () => (open.value = true),
-  close: () => (open.value = false),
-  toggle: () => (open.value = !open.value),
+  open: () => {if (!open.value) open.value = true },
+  close: () => { if (open.value) open.value = false },
+  toggle: () => { open.value = !open.value },
 })
 
 const { update, floatingStyles } = useFloating(reference, floating, {

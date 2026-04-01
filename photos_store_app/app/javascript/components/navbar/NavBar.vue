@@ -2,7 +2,7 @@
     <div class="flex items-center w-full h-navbar bg-navy-blue p-sm">
         <div class="flex-1"></div>
 
-        <div class="w-full max-w-lg mr-sm">
+        <div class="w-full max-w-xl mr-sm">
             <Search />
         </div>
 

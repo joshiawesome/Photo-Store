@@ -69,54 +69,70 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     Product.import
     Product.__elasticsearch__.refresh_index!
 
-    results = Product.search_by_name("xyz").records.to_a
+    get products_search_url, params: { query: "xyz" }, as: :json
+    assert_response :success
 
-    assert_empty results
+    json = JSON.parse(response.body)
+    assert_empty json
   end 
 
-    test "should filter products by name" do
+  test "should filter products by name" do
     Product.__elasticsearch__.create_index!(force: true)
       
-    Product.create!(id: 'lego_city', name: "Lego City")
-    Product.create!(id: 'lego_creator', name: "Lego Creator")
+    product_one = Product.create!(id: 'lego_city', name: "Lego City")
+    product_one.variants.create!(id: "lego_city_variant", name: "Lego City")
+    
+    product_two = Product.create!(id: 'lego_creator', name: "Lego Creator")
+    product_two.variants.create!(id: "lego_creator_variant", name: "Lego Creator")
 
     Product.import
     Product.__elasticsearch__.refresh_index!
 
-    results = Product.search_by_name("lego").records.to_a
+    get products_filter_url, params: { name: "lego" }, as: :json
+    assert_response :success
 
-    ids = results.map(&:id)
+    json = JSON.parse(response.body)
+    ids = json.map { |p| p["id"] }
     assert_includes ids, "lego_city"
     assert_includes ids, "lego_creator"
   end
 
   test "filtering by name returns empty results when no matches are found" do
     Product.__elasticsearch__.create_index!(force: true)
-      
-    Product.create!(id: 'lego_city', name: "Lego City")
-    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    product_one = Product.create!(id: 'lego_city', name: "Lego City")
+    product_one.variants.create!(id: "lego_city_variant", name: "Lego City")
+    
+    product_two = Product.create!(id: 'lego_creator', name: "Lego Creator")
+    product_two.variants.create!(id: "lego_creator_variant", name: "Lego Creator")
 
     Product.import
     Product.__elasticsearch__.refresh_index!
 
-    results = Product.search_by_name("xyz").records.to_a
+    get products_filter_url, params: { name: "xyz" }, as: :json
+    assert_response :success
 
-    ids = results.map(&:id)
-    assert_empty ids
+    json = JSON.parse(response.body)
+    assert_empty json
   end
 
   test "filtering by blank name string should return all products" do
     Product.__elasticsearch__.create_index!(force: true)
       
-    Product.create!(id: 'lego_city', name: "Lego City")
-    Product.create!(id: 'lego_creator', name: "Lego Creator")
+    product_one = Product.create!(id: 'lego_city', name: "Lego City")
+    product_one.variants.create!(id: "lego_city_variant", name: "Lego City")
+    
+    product_two = Product.create!(id: 'lego_creator', name: "Lego Creator")
+    product_two.variants.create!(id: "lego_creator_variant", name: "Lego Creator")
 
     Product.import
     Product.__elasticsearch__.refresh_index!
 
-    results = Product.search_by_name("").records.to_a
+    get products_filter_url, params: { name: "" }, as: :json
+    assert_response :success
 
-    ids = results.map(&:id)
+    json = JSON.parse(response.body)
+    ids = json.map { |p| p["id"] }
     assert_includes ids, "lego_city"
     assert_includes ids, "lego_creator"
   end
