@@ -60,6 +60,14 @@ class Product < ApplicationRecord
               search_analyzer: "search_analyzer"
   end
 
+  # tell Elastic db to only store the name field
+  # returns a hash
+  def as_indexed_json(options = {})
+    {
+      name: name
+    }
+  end
+
   # custom method for the model to search products by name
   def self.search_by_name(query)
       if query.blank?
@@ -79,4 +87,6 @@ class Product < ApplicationRecord
         )
       end
   end
+
+  
 end
