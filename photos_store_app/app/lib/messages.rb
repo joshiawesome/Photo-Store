@@ -13,4 +13,8 @@ module Messages
     invalid_credentials: "Please login with valid credentials",
     not_logged_in: "Not logged in"
   }.freeze
+
+  INFO = {
+    no_results_found: "No results found"
+  }.freeze
 end

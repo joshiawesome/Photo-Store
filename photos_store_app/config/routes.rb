@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   # Other routes ...
+  # routes can also be organized as collections
 
   # products routes
   # Route /products to ProductsController#index
   resources :products, only: [:index]
-  # Route /products/import to ProductsController#import
   post "products/import", to: "products#import"
+  get "products/search", to: "products#search"
 
   # users routes
   resources :users, only: [:create]

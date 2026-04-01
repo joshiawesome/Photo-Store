@@ -10,6 +10,16 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     Product.delete_all
   end
 
+  test "should call importer and return success message" do
+    Products::ProductsImporter.stub(:import, true) do
+      post products_import_url, as: :json
+      assert_response :success
+
+      json = JSON.parse(response.body)
+      assert_equal "Products imported successfully!", json["message"]
+    end
+  end
+
   test "GET index responds with HTML" do
     get products_url # default format is HTML
     assert_response :success
@@ -31,13 +41,36 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_equal image.url, json.first["image"]
   end
 
-  test "should call importer and return success message" do
-    Products::ProductsImporter.stub(:import, true) do
-      post products_import_url, as: :json
-      assert_response :success
+  test "should search products by name" do
+    Product.__elasticsearch__.create_index!(force: true)
 
-      json = JSON.parse(response.body)
-      assert_equal "Products imported successfully!", json["message"]
-    end
+    product_one = Product.create!(id: "lego", name: "lego")
+    product_two = Product.create!(id: "lego2", name: "lego2")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    get products_search_url, params: { query: "l" }, as: :json
+    assert_response :success
+
+    # expected_products = [product_one, product_two].map { |p| { id: p.id, name: p.name } }
+    expected_products = [product_one, product_two].map { |p| { "id" => p.id, "name" => p.name } }
+
+    json = JSON.parse(response.body)
+    assert_equal expected_products, json
   end
+
+  test "search_by_name returns empty array when no results" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("xyz").records.to_a
+
+    assert_empty results
+  end 
 end

@@ -1,4 +1,9 @@
 class ProductsController < ApplicationController
+  def import
+    Products::ProductsImporter.import
+    render json: { message: "Products imported successfully!" }
+  end
+
   def index
     @products = Product.all
 
@@ -17,8 +22,18 @@ class ProductsController < ApplicationController
     end
   end
 
-  def import
-    Products::ProductsImporter.import
-    render json: { message: "Products imported successfully!" }
+  def search
+    results = Product.search_by_name(search_params).records.to_a
+    
+    render json: results.map { |product|
+      {
+        id: product.id,
+        name: product.name
+      }
+    }
+  end
+
+  def search_params
+    params.require(:query)
   end
 end

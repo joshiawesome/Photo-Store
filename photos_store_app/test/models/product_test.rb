@@ -61,4 +61,19 @@ class ProductTest < ActiveSupport::TestCase
     assert_includes names, "Lego City"
     assert_includes names, "Lego Creator"
   end
+
+  test "search_by_name returns empty results when no matches" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
+    Product.create!(id: 'lego_city', name: "Lego City")
+    Product.create!(id: 'lego_creator', name: "Lego Creator")
+
+    Product.import
+    Product.__elasticsearch__.refresh_index!
+
+    results = Product.search_by_name("xyz").records.to_a
+
+    names = results.map(&:name)
+    assert_empty names
+  end
 end
