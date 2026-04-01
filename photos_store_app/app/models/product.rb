@@ -17,11 +17,10 @@ class Product < ApplicationRecord
   settings (
     { 
       index: {
-        max_ngram_diff: 19,  
         analysis: {
           tokenizer: {
             autocomplete_tokenizer: {
-              type: "ngram",
+              type: "edge_ngram",
               min_gram: 1,
               max_gram: 20,
               token_chars: ["letter", "digit"]

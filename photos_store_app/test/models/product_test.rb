@@ -55,7 +55,7 @@ class ProductTest < ActiveSupport::TestCase
     Product.import(force: true)
     Product.__elasticsearch__.refresh_index!
 
-    results = Product.search_by_name("e").records.to_a
+    results = Product.search_by_name("l").records.to_a
 
     names = results.map(&:name)
     assert_includes names, "Lego City"
