@@ -1,8 +1,16 @@
 <template>
-    <!-- html attribute binding is done here -->
-    <input id="photos_app_input_box" :class="`input input-${size}`" :type="inputType" :placeholder="placeholder"
-        :value="inputValue" :min="isNumberInput ? min : undefined" :max="isNumberInput ? max : undefined"
-        :step="isNumberInput ? step : undefined" :disabled="isDisabled" @input="handleOnChange" />
+    <div class="input-wrapper">
+        <div class="input-left-wrapper">
+            <div class="icon-div flex items-center ml-xs mr-sm">
+                <slot name="icon"></slot>
+            </div>
+            <!-- html attribute binding is done here -->
+            <input :id="props.id" :class="`input input-${size}`" :type="inputType" :placeholder="placeholder"
+                :value="inputValue" :min="isNumberInput ? min : undefined" :max="isNumberInput ? max : undefined"
+                :step="isNumberInput ? step : undefined" :disabled="isDisabled" @input="handleOnChange"
+                autocomplete="off" />
+        </div>
+    </div>
     <span v-if="error" class="text-red text-sm">{{ error }}</span>
 </template>
 
@@ -12,7 +20,8 @@ import { computed, InputTypeHTMLAttribute, ref, watch } from 'vue'
 export type IValue = string | number | null
 
 interface Props {
-    passedValue: IValue
+    id: string
+    passedValue?: IValue
     inputType?: InputTypeHTMLAttribute
     placeholder?: string
     min?: number

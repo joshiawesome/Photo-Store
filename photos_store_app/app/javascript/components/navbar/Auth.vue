@@ -6,9 +6,9 @@
         </template>
         <template #content>
             <div class="relative flex flex-col gap-sm">
-                <Input input-type="email" :passed-value="null" placeholder="Email"
+                <Input :id="`${props.type}-email-input`" input-type="email" :passed-value="null" placeholder="Email"
                     v-on:change="onChange($event, 'email')" :error="errors?.email?.[0]" />
-                <Input input-type="password" :passed-value="null" placeholder="Password"
+                <Input :id="`${props.type}-password-input`" input-type="password" :passed-value="null" placeholder="Password"
                     v-on:change="onChange($event, 'password')" :error="errors?.password?.[0]" />
                 <div v-if="errors?.base?.[0]" class="text-red text-sm">{{ errors.base[0] }}</div>
             </div>

@@ -1,15 +1,35 @@
 /* input.css */
 
 @layer components {
-    .input {
-        @apply w-full rounded-sm border transition-all duration-200 outline-none;
+    .input-wrapper {
+        @apply w-full rounded-sm border outline-none;
         background-color: var(--white);
         border-color: var(--gray-200);
+    }
+
+    .input-left-wrapper{
+         @apply flex;
+    }
+    
+    .input-left-wrapper .icon-div svg {
+        @apply cursor-default;
+    }
+
+    .input {
+        @apply w-full rounded transition-all duration-200 outline-none;
     }
 
     .input:disabled {
         @apply cursor-not-allowed opacity-60;
         background-color: #f9fafb;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        box-shadow: 0 0 0px 1000px white inset; /* change white to your bg */
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+        -webkit-text-fill-color: #000; /* text color */
     }
 
     /* Sizes */
