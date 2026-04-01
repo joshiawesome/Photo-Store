@@ -47,15 +47,18 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "search_by_name returns correct results" do
+    Product.__elasticsearch__.create_index!(force: true)
+      
     Product.create!(id: 'lego_city', name: "Lego City")
     Product.create!(id: 'lego_creator', name: "Lego Creator")
 
-    Product.import
+    Product.import(force: true)
     Product.__elasticsearch__.refresh_index!
 
-    results = Product.search_by_name("lego").records.to_a
+    results = Product.search_by_name("e").records.to_a
 
-    assert_includes results.map(&:name), "Lego City"
-    assert_includes results.map(&:name), "Lego Creator"
+    names = results.map(&:name)
+    assert_includes names, "Lego City"
+    assert_includes names, "Lego Creator"
   end
 end

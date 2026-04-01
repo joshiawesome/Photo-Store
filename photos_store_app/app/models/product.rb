@@ -12,51 +12,68 @@ class Product < ApplicationRecord
   has_many :images, as: :imageable
   has_many :additional_informations
 
-  # settings is a method to which index configuration is passed
-  settings index: {
-    analysis: {
-      tokenizer: {
-        autocomplete_tokenizer: {
-          type: "edge_ngram",
-          min_gram: 1,
-          max_gram: 20,
-          token_chars: ["letter", "digit"]
-        }
-      },
-      analyzer: {
-        autocomplete: {
-          type: "custom",
-          tokenizer: "autocomplete_tokenizer",
-          filter: ["lowercase"]
-        },
-        search_analyzer: {
-          type: "custom",
-          tokenizer: "standard",
-          filter: ["lowercase"]
-        }
-      }
-    }
-}
-# mapping is a method to which mapping configuration is passed
-mapping do
-    indexes :name,
-            type: "text",
-            analyzer: "autocomplete",
-            search_analyzer: "search_analyzer"
-end
-
-def self.search_by_name(query)
-  __elasticsearch__.search(
-    {
-      query: {
-        match: {
-          name: {
-            query: query,
-            operator: "and"
+  # elastic search setting configuration
+  # settings is a regular method
+  settings (
+    { 
+      index: {
+        max_ngram_diff: 19,  
+        analysis: {
+          tokenizer: {
+            autocomplete_tokenizer: {
+              type: "ngram",
+              min_gram: 1,
+              max_gram: 20,
+              token_chars: ["letter", "digit"]
+            }
+          },
+          analyzer: {
+            autocomplete: {
+              type: "custom",
+              tokenizer: "autocomplete_tokenizer",
+              filter: ["lowercase"]
+            },
+            search_analyzer: {
+              type: "custom",
+              tokenizer: "standard",
+              filter: ["lowercase"]
+            }
           }
         }
       }
     }
   )
-end
+  # elastic search mapping configuration
+  # mapping is DSL (Domain Specific Language) of Elasticsearch for defining the structure of the index
+  # here we pass a block to the method 'mapping'
+  # block is taken and is internally converted to a hash and used to define the mapping
+  # DSL is like instructions:
+  #
+  # example: 
+  # Recipe DSL:
+  #   add flour
+  #   add sugar
+  #   bake for 30 minutes
+  mapping do
+      indexes :name,
+              type: "text",
+              analyzer: "autocomplete",
+              search_analyzer: "search_analyzer"
+  end
+
+  # custom method for the model to search products by name
+  def self.search_by_name(query)
+    __elasticsearch__.search(
+      {
+        query: {
+          match: {
+            name: {
+              query: query,
+              operator: "and"
+            }
+          }
+        }
+      }
+    )
+  end
 end
