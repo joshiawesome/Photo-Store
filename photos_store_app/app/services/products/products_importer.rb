@@ -7,16 +7,29 @@ module Products
         def self.import
             api_base_url = ENV['API_BASE_URL']
             api_token = ENV['API_TOKEN']
-            url = "#{api_base_url}/collections/all/products?storefront_token=#{api_token}"
 
-            # trigger the external API and hydrate the local database
-            response = HTTParty.get(url)
+            all_products = []
+            page = 0
+            has_more = true
 
-            data = response.parsed_response["results"]
+            puts "Starting product import..."
 
-            # Rails.logger.info JSON.pretty_generate(data.as_json)
+            while has_more
+                url = "#{api_base_url}/collections/all/products?storefront_token=#{api_token}&page=#{page}"
+                res = HTTParty.get(url)
+                data = res.parsed_response["results"]
+                paging = res.parsed_response["paging"]
+                all_products.concat(data)
+                has_more = paging["hasNextPage"]
 
-            data.each do |config|
+                puts "Page: #{page}, Has More: #{has_more}"
+
+                page += 1
+            end
+
+            # Rails.logger.info JSON.pretty_generate(all_products)
+
+            all_products.each do |config|
                 # 1. HYDRATE PRODUCTS TABLE
 
                 product = Product.find_or_initialize_by(id: config["id"])
@@ -131,6 +144,7 @@ module Products
                 end
                 
             end
+            nil
         end
     end
 end

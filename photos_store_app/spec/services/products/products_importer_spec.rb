@@ -42,7 +42,10 @@ RSpec.describe Products::ProductsImporter do
               { "id" => "info_1", "type" => "care", "title" => "Care instructions", "bodyHtml" => "<p>Wash carefully</p>" }
             ]
           }
-        ]
+        ],
+        "paging" => {
+          "hasNextPage" => false
+        }
       }
     end
 
@@ -51,7 +54,7 @@ RSpec.describe Products::ProductsImporter do
       # inject/stub the .env variables with mock values
       stub_const('ENV', ENV.to_hash.merge('API_BASE_URL' => api_base_url, 'API_TOKEN' => api_token))
       stub_request(:put, /localhost:9200/).to_return(status: 200, body: "")
-    stub_request(:post, /localhost:9200/).to_return(status: 200, body: "")
+      stub_request(:post, /localhost:9200/).to_return(status: 200, body: "")
 
       # stub the HTTP request
       # :get acts like an enum type for HTTP methods

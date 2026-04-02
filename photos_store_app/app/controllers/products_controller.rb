@@ -53,7 +53,8 @@ class ProductsController < ApplicationController
       {
         id: product.id,
         name: product.name,
-        image: product.variants.first&.images.first&.url
+        image: product.variants.first&.images.first&.url,
+        # category: product.category
       }
     }
   end
